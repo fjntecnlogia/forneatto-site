@@ -1,0 +1,42 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:caminho*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(www\\.)?forneato\\.com\\.br"
+        }
+      ],
+      "destination": "https://forneattocucina.com.br/:caminho*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/reservas-api/:caminho*",
+      "destination": "https://api-painel.fjntecnologia.com.br/public/reservas/:caminho*"
+    },
+    {
+      "source": "/agenda-api/:caminho*",
+      "destination": "https://api-painel.fjntecnologia.com.br/public/eventos/:caminho*"
+    },
+    {
+      "source": "/opiniao-api/:caminho*",
+      "destination": "https://api-painel.fjntecnologia.com.br/public/opiniao/:caminho*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

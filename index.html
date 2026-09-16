@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/img/icone/forneatto-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/icone/forneatto-180.png">
+<meta name="apple-mobile-web-app-title" content="Forneatto">
+<meta name="theme-color" content="#0e3b1e">
+
+<title>Forneatto Cucina · Cozinha Italiana em Cuiabá — forno a lenha ao lado do Shopping Três Américas</title>
+<meta name="description" content="Forneatto Cucina: pizza napolitana em forno a lenha, massa fresca feita todo dia e carta de vinhos em Cuiabá. Ao lado do Shopping Três Américas.">
+<link rel="canonical" href="https://forneattocucina.com.br/">
+<meta property="og:url" content="https://forneattocucina.com.br/">
+<meta property="og:title" content="Forneatto Cucina · Cozinha Italiana em Cuiabá">
+<meta property="og:description" content="Pizza napolitana em forno a lenha e massa fresca feita todo dia. Ao lado do Shopping Três Américas.">
+<meta property="og:image" content="https://forneattocucina.com.br/assets/img/italiano/og.jpg">
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/reserva/reserva.css">
+<link rel="stylesheet" href="assets/agenda/agenda.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   FORNEATTO CUCINA — cozinha italiana
+   Direção: verde de osteria como cor dominante (e não o creme de
+   sempre), Bodoni — o tipo de Parma, 1798 — como voz, vermelho
+   guardado para um só gesto por seção.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --verde:      #0e3b1e;   /* verde do logo */
+  --verde-deep: #06240f;
+  --verde-mid:  #17542c;
+  --rosso:      #c4161c;   /* vermelho do logo */
+  --rosso-viv:  #e02831;
+  --avorio:     #fbf8f1;   /* marfim */
+  --crema:      #f2ebdc;
+  --carbone:    #17140f;
+  --grigio:     #6d6659;
+  --filo:       #ddd4c2;
+
+  --display: "Bodoni Moda", "Didot", Georgia, serif;
+  --testo:   "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --pad: clamp(22px, 6vw, 92px);
+  --gap: clamp(70px, 10vw, 156px);
+
+  /* Formulário de reserva (assets/reserva/reserva.css) vestido com as
+     cores desta casa. A folha não tem cor nenhuma própria. */
+  --rsv-fundo:        transparent;
+  --rsv-tinta:        var(--carbone);
+  --rsv-tinta-fraca:  var(--grigio);
+  --rsv-fio:          var(--filo);
+  --rsv-acento:       var(--rosso);
+  --rsv-acento-tinta: var(--avorio);
+  --rsv-campo:        var(--avorio);
+  --rsv-raio:         4px;
+  --rsv-display:      var(--display);
+  --rsv-testo:        var(--testo);
+
+  /* Agenda da casa (assets/agenda/agenda.css). */
+  --agd-fundo:          var(--avorio);
+  --agd-fundo-hover:    var(--crema);
+  --agd-tinta:          var(--carbone);
+  --agd-tinta-fraca:    var(--grigio);
+  --agd-fio:            var(--filo);
+  --agd-acento:         var(--rosso);
+  --agd-destaque:       var(--rosso);
+  --agd-destaque-tinta: var(--avorio);
+  --agd-display:        var(--display);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--avorio); color: var(--carbone);
+  font-family: var(--testo); font-size: 16.5px; line-height: 1.75;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+::selection { background: var(--rosso); color: var(--avorio); }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding-inline: var(--pad); }
+.block { padding-block: var(--gap); }
+.crema { background: var(--crema); }
+/* a navegacao e fixa: sem isto a ancora para embaixo dela */
+section[id] { scroll-margin-top: 74px; }
+.verde { background: var(--verde); color: var(--avorio); }
+.verde .occhiello { color: #8fd6a5; }
+.verde .sotto { color: rgba(251,248,241,.74); }
+
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.14; text-wrap: balance; }
+h1 { font-size: clamp(44px, 8vw, 108px); letter-spacing: -.02em; }
+h2 { font-size: clamp(31px, 4.6vw, 58px); letter-spacing: -.015em; }
+h3 { font-size: clamp(20px, 2.1vw, 25px); }
+h1 i, h2 i { font-style: italic; color: var(--rosso); }
+.verde h1 i, .verde h2 i { color: #ff8a8f; }
+p { margin: 0 0 1.1em; }
+p:last-child { margin-bottom: 0; }
+
+.occhiello {
+  font-family: var(--testo); font-size: 10.5px; font-weight: 700;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--rosso);
+  display: block; margin: 0 0 20px;
+}
+.sotto { font-size: clamp(17px, 1.7vw, 19.5px); color: var(--grigio); max-width: 56ch; line-height: 1.85; }
+.piccolo { font-size: 14.5px; color: var(--grigio); }
+
+/* ── botões ───────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 34px; border: 0; cursor: pointer; text-decoration: none;
+  background: var(--rosso); color: var(--avorio);
+  font-family: var(--testo); font-size: 12.5px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  transition: background .2s ease, transform .2s ease;
+}
+.btn:hover { background: var(--rosso-viv); transform: translateY(-2px); }
+.btn--vuoto { background: transparent; color: currentColor; box-shadow: inset 0 0 0 1px currentColor; }
+.btn--vuoto:hover { background: currentColor; color: var(--verde); transform: translateY(-2px); }
+.verde .btn--vuoto:hover { color: var(--verde); }
+.riga { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+
+/* ── navegação ────────────────────────────────────────────────── */
+.nav { position: sticky; top: 0; z-index: 60; background: var(--verde); color: var(--avorio); }
+.nav__in {
+  max-width: 1200px; margin: 0 auto; padding: 13px var(--pad);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.marchio { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.marchio__seal { width: 42px; height: 42px; flex: none; }
+.marchio__txt { display: flex; flex-direction: column; line-height: 1; }
+.marchio__nome {
+  font-family: var(--display); font-weight: 500; font-size: 22px;
+  letter-spacing: .13em; color: var(--avorio);
+}
+.marchio__sub { font-size: 8px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: #8fd6a5; margin-top: 6px; }
+.nav__links { display: flex; align-items: center; gap: 30px; }
+.nav__links a {
+  font-size: 12px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase;
+  text-decoration: none; color: rgba(251,248,241,.72); padding-block: 4px;
+  border-bottom: 1px solid transparent; transition: .18s ease;
+}
+.nav__links a:not(.btn):hover { color: var(--avorio); border-bottom-color: var(--rosso); }
+/* o seletor generico acima vence o .btn por especificidade — reforcar */
+.nav__links a.btn, .nav__links a.btn:hover { color: var(--avorio); border-bottom-color: transparent; }
+.nav .btn { padding: 12px 22px; font-size: 11px; }
+@media (max-width: 940px) { .nav__links a:not(.btn) { display: none; } }
+
+/* ── abertura ─────────────────────────────────────────────────── */
+/* FOTO DO TOPO — trocar 'none' por url("assets/img/italiano/hero.jpg").
+   Foto do forno aceso funciona melhor aqui; o véu verde mantém o texto legível. */
+:root { --hero-img: none; }
+/* SIMULACAO, para aprovar o tratamento antes de as fotos reais chegarem.
+   A classe e ligada pela previa; o site publicado nao a tem, entao por
+   padrao continua sem foto. Quando a foto real chegar: apontar
+   --hero-img no :root acima e apagar este bloco. */
+html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
+.hero {
+  background-color: var(--verde-deep);
+  background-image:
+    radial-gradient(78% 62% at 78% 12%, rgba(196,22,28,.30), transparent 60%),
+    radial-gradient(60% 50% at 8% 92%, rgba(23,84,44,.72), transparent 62%),
+    linear-gradient(180deg, rgba(6,36,15,.74) 0%, rgba(6,36,15,.90) 100%),
+    var(--hero-img);
+  background-size: cover;
+  background-position: center;
+  color: var(--avorio); padding-block: clamp(62px, 9vw, 128px);
+  border-bottom: 5px solid var(--rosso);
+}
+.hero h1 { max-width: 13ch; }
+.hero .sotto { color: rgba(251,248,241,.78); max-width: 46ch; margin-top: 28px; }
+.hero__grid { display: grid; gap: clamp(44px, 6vw, 80px); align-items: center; }
+@media (min-width: 960px) { .hero__grid { grid-template-columns: 1.2fr .8fr; } }
+.hero__meta {
+  display: flex; flex-wrap: wrap; gap: 8px 34px; margin-top: 46px;
+  padding-top: 24px; border-top: 1px solid rgba(251,248,241,.2);
+  font-size: 11.5px; font-weight: 600; letter-spacing: .17em;
+  text-transform: uppercase; color: rgba(251,248,241,.6);
+}
+.fetta { display: grid; place-items: center; }
+.fetta svg { width: min(100%, 330px); height: auto; }
+
+/* ── faixa do forno: os números do napolitano ─────────────────── */
+.forno { background: var(--rosso); color: var(--avorio); }
+.forno__grid { display: grid; gap: 34px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.cifra { display: flex; flex-direction: column; gap: 6px; }
+.cifra b {
+  font-family: var(--display); font-weight: 400; font-size: clamp(42px, 5.4vw, 66px);
+  line-height: .96; font-variant-numeric: tabular-nums; letter-spacing: -.02em;
+}
+.cifra span { font-size: 11.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(251,248,241,.82); }
+
+/* ── história ─────────────────────────────────────────────────── */
+.storia { display: grid; gap: clamp(36px, 5vw, 76px); align-items: start; }
+@media (min-width: 900px) { .storia { grid-template-columns: 1fr 1fr; } }
+.capolettera::first-letter {
+  font-family: var(--display); font-size: 4.6em; float: left; line-height: .78;
+  margin: .06em .12em 0 0; color: var(--rosso); font-weight: 500;
+}
+
+/* ── cardápio ─────────────────────────────────────────────────── */
+.carta { display: grid; gap: clamp(40px, 5vw, 74px); }
+@media (min-width: 900px) { .carta { grid-template-columns: 1fr 1fr; } }
+.portata { margin-bottom: 56px; }
+.portata:last-child { margin-bottom: 0; }
+.portata__head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  border-bottom: 2px solid var(--verde); padding-bottom: 12px; margin-bottom: 6px;
+}
+.portata__head h3 { color: var(--verde); }
+.portata__head span { font-size: 10.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--grigio); }
+
+.piatto { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; padding: 16px 0; border-bottom: 1px solid var(--filo); }
+.piatto:last-child { border-bottom: 0; }
+.piatto__nome { font-family: var(--display); font-size: 21px; font-weight: 500; margin: 0; line-height: 1.3; }
+.piatto__prezzo { font-family: var(--display); font-size: 18px; font-weight: 500; white-space: nowrap; color: var(--rosso); font-variant-numeric: tabular-nums; }
+.piatto__desc { grid-column: 1 / -1; margin: 5px 0 0; font-size: 14.5px; color: var(--grigio); line-height: 1.7; max-width: 52ch; }
+/* Prato com foto vinda do Saipos (img_path). Sem foto, a linha e a de sempre. */
+.piatto--foto { grid-template-columns: 74px 1fr auto; }
+.piatto__foto {
+  grid-row: 1 / span 3; grid-column: 1;
+  width: 74px; height: 84px; object-fit: cover;
+  border-radius: 3px; background: var(--crema);
+}
+
+.bollo {
+  display: inline-block; margin-left: 9px; padding: 3px 9px; vertical-align: middle;
+  font-family: var(--testo); font-size: 9.5px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--verde); border: 1px solid var(--verde);
+}
+
+/* o sync ja entrega a carta em duas colunas equilibradas (dois <div>);
+   aqui so se diz onde elas ficam lado a lado e onde viram uma so */
+.carta { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(30px, 5vw, 76px); }
+@media (max-width: 860px) { .carta { grid-template-columns: 1fr; } }
+
+/* ── vinhos ───────────────────────────────────────────────────── */
+.duo { display: grid; gap: clamp(36px, 5vw, 72px); align-items: center; }
+@media (min-width: 900px) { .duo { grid-template-columns: 1fr 1fr; } }
+
+/* ── galeria ──────────────────────────────────────────────────── */
+.scatti { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+.scatto {
+  aspect-ratio: 4/5; background: var(--crema); border: 1px solid var(--filo);
+  display: grid; place-items: center;
+}
+.scatto--largo { aspect-ratio: 16/10; grid-column: span 2; }
+@media (max-width: 640px) { .scatto--largo { grid-column: span 1; } }
+.scatto span { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #a89e8c; text-align: center; padding: 14px; }
+
+/* ── eventos ──────────────────────────────────────────────────── */
+.sale { display: grid; gap: 1px; background: rgba(251,248,241,.2); }
+@media (min-width: 820px) { .sale { grid-template-columns: repeat(3, 1fr); } }
+.sala { background: var(--verde); padding: 36px 32px; }
+.sala b { font-family: var(--display); font-size: 34px; color: #ff8a8f; display: block; line-height: 1; margin-bottom: 16px; font-variant-numeric: tabular-nums; }
+.sala h3 { color: var(--avorio); margin-bottom: 9px; }
+.sala p { font-size: 14.5px; color: rgba(251,248,241,.74); line-height: 1.7; }
+
+/* ── localização ──────────────────────────────────────────────── */
+.orari { list-style: none; margin: 26px 0 0; padding: 0; }
+.orari li { display: flex; justify-content: space-between; gap: 22px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--filo); font-size: 15px; }
+.orari li:last-child { border-bottom: 0; }
+.orari b { font-weight: 700; }
+.orari span { color: var(--grigio); font-variant-numeric: tabular-nums; }
+.mappa { aspect-ratio: 4/3; width: 100%; border: 1px solid var(--filo); background: var(--crema); display: grid; place-items: center; }
+.mappa span { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #a89e8c; }
+
+/* ── rodapé ───────────────────────────────────────────────────── */
+.piede { background: var(--verde-deep); color: rgba(251,248,241,.72); padding-block: 62px 30px; }
+.piede__grid { display: grid; gap: 36px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.piede a { color: rgba(251,248,241,.72); text-decoration: none; }
+.piede a:hover { color: #ff8a8f; }
+.piede .occhiello { color: #8fd6a5; margin-bottom: 14px; }
+.piede__fine {
+  margin-top: 46px; padding-top: 22px; border-top: 1px solid rgba(251,248,241,.16);
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 11.5px;
+}
+.sorelle { display: flex; flex-wrap: wrap; gap: 20px; }
+
+/* ── whatsapp ─────────────────────────────────────────────────── */
+.wa {
+  position: fixed; right: 20px; bottom: 20px; z-index: 70;
+  display: inline-flex; align-items: center; gap: 11px; padding: 15px 24px;
+  background: var(--rosso); color: var(--avorio); text-decoration: none;
+  font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  box-shadow: 0 12px 34px rgba(14,59,30,.32); transition: transform .2s ease;
+}
+.wa:hover { transform: translateY(-3px); }
+.wa svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+@media (max-width: 560px) { .wa span { display: none; } .wa { padding: 17px; border-radius: 50%; } }
+
+:focus-visible { outline: 2px solid var(--rosso); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="marchio" href="#cima" aria-label="Forneatto Cucina, início">
+      <!-- Redesenho vetorial da marca real (assets/img/logos/forneatto-fundo-claro.png):
+           mesmo vermelho, mesma fatia, mesmos tres pontos. Fica em SVG de proposito —
+           a 42 px o vetor e mais nitido que o recorte do PNG, e assenta em qualquer fundo. -->
+      <svg class="marchio__seal" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="#c4161c"/>
+        <path d="M50 22 L74 70 Q50 82 26 70 Z" fill="#fbf8f1"/>
+        <circle cx="50" cy="52" r="4.4" fill="#c4161c"/>
+        <circle cx="39" cy="64" r="4.4" fill="#c4161c"/>
+        <circle cx="61" cy="64" r="4.4" fill="#c4161c"/>
+      </svg>
+      <span class="marchio__txt">
+        <span class="marchio__nome">FORNEATTO</span>
+        <span class="marchio__sub">Cucina · Cozinha Italiana</span>
+      </span>
+    </a>
+    <nav class="nav__links">
+      <a href="#storia">A casa</a>
+      <a href="#carta">Cardápio</a>
+      <a href="#vini">Vinhos</a>
+      <a href="#ambiente">Ambiente</a>
+      <a href="#dove">Onde estamos</a>
+      <a class="btn" href="#reservar">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="cima">
+
+<!-- ═══ abertura ═══ -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="occhiello" style="color:#8fd6a5">Cucina italiana · Cuiabá</span>
+      <h1>Noventa segundos<br>a <i>450 graus</i>.</h1>
+      <p class="sotto">É o tempo que a pizza napolitana passa no forno a lenha — e o motivo de a borda sair alta, macia e com a marca do fogo. A massa descansa vinte e quatro horas antes de chegar lá.</p>
+      <div class="riga">
+        <a class="btn" href="#reservar">Reservar mesa</a>
+        <a class="btn btn--vuoto" href="#carta">Ver o cardápio</a>
+      </div>
+      <div class="hero__meta">
+        <span>Ter a Dom · almoço e jantar</span>
+        <span>Forno a lenha</span>
+        <span>Ao lado do Shopping Três Américas</span>
+      </div>
+    </div>
+    <div class="fetta" aria-hidden="true">
+      <svg viewBox="0 0 240 240">
+        <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(251,248,241,.22)" stroke-width="1.5"/>
+        <circle cx="120" cy="120" r="88" fill="#c4161c"/>
+        <path d="M120 66 L166 158 Q120 180 74 158 Z" fill="#fbf8f1"/>
+        <circle cx="120" cy="123" r="8.4" fill="#c4161c"/>
+        <circle cx="99" cy="146" r="8.4" fill="#c4161c"/>
+        <circle cx="141" cy="146" r="8.4" fill="#c4161c"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ os números do forno ═══ -->
+<section class="block forno" style="padding-block:clamp(44px,5vw,72px)">
+  <div class="wrap forno__grid">
+    <div class="cifra"><b>450°C</b><span>Temperatura do forno</span></div>
+    <div class="cifra"><b>90s</b><span>Cada pizza dentro dele</span></div>
+    <div class="cifra"><b>24h</b><span>De fermentação da massa</span></div>
+    <div class="cifra"><b>6h</b><span>De cozimento do ragù</span></div>
+  </div>
+</section>
+
+<!-- ═══ história ═══ -->
+<section class="block" id="storia">
+  <div class="wrap storia">
+    <div>
+      <span class="occhiello">A casa</span>
+      <h2>A massa é aberta de manhã. <i>Toda</i> manhã.</h2>
+    </div>
+    <div>
+      <p class="sotto capolettera">Ovos, farinha e tempo — não há segredo além disso. O que sai da cozinha às sete da noite foi aberto à mão às sete da manhã, e é essa diferença de doze horas que se sente na mordida.</p>
+      <p class="sotto">O molho de tomate cozinha quatro horas. O ragù, seis. A cozinha abre cedo porque é o único jeito honesto de servir cozinha italiana: quem prepara a massa na hora do pedido está servindo outra coisa.</p>
+      <p class="piccolo" style="margin-top:22px">[TROCAR: dois parágrafos com a história real — de onde vêm as receitas, quem é o chef, ano de abertura.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ cardápio ═══ -->
+<section class="block crema" id="carta">
+  <div class="wrap">
+    <span class="occhiello">La carta</span>
+    <h2 style="margin-bottom:20px">O que servimos</h2>
+    <p class="sotto" style="margin-bottom:clamp(40px,5vw,68px)">Uma seleção da carta. O menu completo tem antipasti, risotos, secondi e uma página só de dolci.</p>
+
+    <div class="carta">
+      <!-- SAIPOS:MENU:INICIO -->
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+      <!-- SAIPOS:MENU:FIM -->
+    </div>
+
+    <p class="piccolo" style="margin-top:34px">[TROCAR: cardápio real. Manter em texto, nunca em PDF — é o que faz a pizza aparecer numa busca por “pizza napolitana Cuiabá”.]</p>
+  </div>
+</section>
+
+<!-- ═══ vinhos ═══ -->
+<section class="block" id="vini">
+  <div class="wrap duo">
+    <div class="scatti"><div class="scatto scatto--largo"><span>Foto — adega e taças</span></div></div>
+    <div>
+      <span class="occhiello">La cantina</span>
+      <h2>A carta inteira, com <i>o preço na frente</i></h2>
+      <p class="sotto" style="margin-top:22px">Itália, França, Espanha, Portugal, Argentina, Chile, Uruguai e Brasil — do tinto de entrada ao Barolo, além dos espumantes e do champagne.</p>
+      <p class="sotto">Não é preciso entender de vinho para pedir bem aqui: diga o que vai comer e quanto quer gastar, que a gente resolve o resto.</p>
+      <div class="riga">
+        <a class="btn btn--vuoto" style="color:var(--verde)" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Queria%20saber%20sobre%20a%20carta%20de%20vinhos%20do%20Forneatto." target="_blank" rel="noopener">Falar com o sommelier</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- A carta vem do PDV: rotulo novo na adega aparece aqui sozinho.
+       Editar aqui e trabalho perdido — a proxima sincronizacao sobrescreve. -->
+  <div class="wrap carta">
+      <!-- SAIPOS:VINHOS:INICIO -->
+      <div>
+        <div class="portata">
+          <div class="portata__head"><h3>Vinho Tinto</h3><span>22 opções</span></div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Casas del Maipo</p>
+            <span class="piatto__prezzo">R$ 110</span>
+            <p class="piatto__desc">Uva: Cabernet Sauvignon Vale do Maule - CWC | Teor Alc.: 13%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina 4 Estaciones Autumn</p>
+            <span class="piatto__prezzo">R$ 120</span>
+            <p class="piatto__desc">Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Portugal Esperança Alentejo</p>
+            <span class="piatto__prezzo">R$ 135</span>
+            <p class="piatto__desc">Uva: Aragonez, Trincadeira &amp; Castelão Alentejo - Segur Estates | Teor Alc.: 13,5% Amadurecimento: 06 meses</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Chaka (Carmenere)</p>
+            <span class="piatto__prezzo">R$ 140</span>
+            <p class="piatto__desc">Uva: Carmenere Vale Central - Vina Marty | Teor Alc.: 14%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Chaka (Merlot)</p>
+            <span class="piatto__prezzo">R$ 140</span>
+            <p class="piatto__desc">Uva: Merlot Vale Central - Vina Marty | Teor Alc.: 14%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Brasil 1550 BRAS Reserva</p>
+            <span class="piatto__prezzo">R$ 149</span>
+            <p class="piatto__desc">Uva: Cabernet Sauvignon Farroupilha/RS - Basso | Teor Alc.: 13,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Casas del Maipo Reserva</p>
+            <span class="piatto__prezzo">R$ 150</span>
+            <p class="piatto__desc">Uva: Pinot Noir Vale do Maule - CWC | Teor Alc.: 13,5% Amadurecimento: 09 meses</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina Vasco Viejo</p>
+            <span class="piatto__prezzo">R$ 160</span>
+            <p class="piatto__desc">Uva: Malbec Mendoza - Bodegas Lopez | Teor Alc.: 14% Amadurecimento: 03 meses em barricas</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">França Le Petit Maynne Bordeaux</p>
+            <span class="piatto__prezzo">R$ 170</span>
+            <p class="piatto__desc">Uva: Merlot, Cabernet Sauvignon e Cabernet Franc Bordeaux - Petit Maynne | Teor Alc.: 13,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina Malacara (Malbec)</p>
+            <span class="piatto__prezzo">R$ 180</span>
+            <p class="piatto__desc">Uva: Malbec Mendoza - Kauzo Estates | Teor Alc.: 14%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina Malacara (Cabernet Sauvignon)</p>
+            <span class="piatto__prezzo">R$ 180</span>
+            <p class="piatto__desc">Uva: Cabernet Sauvignon Mendoza - Kauzo Estates | Teor Alc.: 13,8%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Itália Toso Barbera DOCG</p>
+            <span class="piatto__prezzo">R$ 190</span>
+            <p class="piatto__desc">Uva: Barbera Piemonte - Toso | Teor Alc.: 13%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina 4 Estaciones Icon Blend</p>
+            <span class="piatto__prezzo">R$ 190</span>
+            <p class="piatto__desc">Uva: Malbec, Cabernet Sauvignon e Petit Verdot Vale do Uco - Tittarelli | Teor Alc.: 14% Amadurecimento: 06 meses em barricas</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Espanha Aradon</p>
+            <span class="piatto__prezzo">R$ 200</span>
+            <p class="piatto__desc">Uva: 90% Tempranillo e 10% Garnacha D.O. Rioja - Bodegas Aradon | Teor Alc.: 14% Amadurecimento: 04 meses</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Itália Chianti</p>
+            <span class="piatto__prezzo">R$ 210</span>
+            <p class="piatto__desc">Uva: Sangiovese Toscana - Sensi | Teor Alc.: 14%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">França Côtes du Rhône Urbain V</p>
+            <span class="piatto__prezzo">R$ 220</span>
+            <p class="piatto__desc">Uva: Grenache, Syrah e Mourvèdre Côtes du Rhône - Urbain V | Teor Alc.: 13%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Itália Luccarelli Primitivo Puglia</p>
+            <span class="piatto__prezzo">R$ 240</span>
+            <p class="piatto__desc">Uva: Primitivo Puglia - Luccarelli | Teor Alc.: 13,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Casa Donoso Bourbon</p>
+            <span class="piatto__prezzo">R$ 250</span>
+            <p class="piatto__desc">Uva: Cabernet Sauvignon Vale Central - Casa Donoso | Teor Alc.: 13,5% Amadurecimento: 6-8 meses barricas Bourbon</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Montes Alpha</p>
+            <span class="piatto__prezzo">R$ 360</span>
+            <p class="piatto__desc">Uva: Carménère Valle del Aconcágua - Viña Montes | Teor Alc.: 14,5% Amadurecimento: 12 meses em barricas</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina Angelica Zapata</p>
+            <span class="piatto__prezzo">R$ 420</span>
+            <p class="piatto__desc">Uva: Malbec Mendoza - Catena Zapata | Teor Alc.: 13,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Itália 1400 Vulcanici DOC Primitivo di Manduria</p>
+            <span class="piatto__prezzo">R$ 1.090</span>
+            <p class="piatto__desc">Uva: Primitivo Puglia - Vinícola Manieri | Teor Alc.: 14,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Itália Barolo</p>
+            <span class="piatto__prezzo">R$ 1.090</span>
+            <p class="piatto__desc">Uva: Nebbiolo Piemonte - Sensi | Teor Alc.: 14,5% Amadurecimento: 24 meses</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="portata">
+          <div class="portata__head"><h3>Vinho Branco</h3><span>10 opções</span></div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Casas del Maipo</p>
+            <span class="piatto__prezzo">R$ 110</span>
+            <p class="piatto__desc">Uva: Sauvignon Blanc Vale do Maule - CWC | Teor Alc.: 13%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina 4 Estaciones Summer</p>
+            <span class="piatto__prezzo">R$ 120</span>
+            <p class="piatto__desc">Uva: Torrontes Mendoza - Tittarelli | Teor Alc.: 13%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">ROSÉ 4 Estaciones Spring Rose</p>
+            <span class="piatto__prezzo">R$ 125</span>
+            <p class="piatto__desc">Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Chile Chaka</p>
+            <span class="piatto__prezzo">R$ 140</span>
+            <p class="piatto__desc">Uva: Chardonnay Vale Central - Vina Marty | Teor Alc.: 13,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Itália Collezione</p>
+            <span class="piatto__prezzo">R$ 199</span>
+            <p class="piatto__desc">Uva: Pinot Grigio Veneto - Sensi | Teor Alc.: 12,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Uruguai Toscanini Reserve</p>
+            <span class="piatto__prezzo">R$ 200</span>
+            <p class="piatto__desc">Uva: Chardonnay Paso Cuello, Canelones - Toscanini | Teor Alc.: 13,5% Amadurecimento: 10 meses em barricas</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Françа Chateau Bellevue Rougier Blanc</p>
+            <span class="piatto__prezzo">R$ 210</span>
+            <p class="piatto__desc">Uva: Semillion, Muscadelle e Sauvignon Blanc Bordeaux - Terre de Vignerons | Teor Alc.: 11,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">ROSÉ Susana Balbo</p>
+            <span class="piatto__prezzo">R$ 260</span>
+            <p class="piatto__desc">Uva: Malbec e Pinot Noir Valle De Uco - Susana Balbo Teor Alc.: 12%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Argentina Angelica Zapata</p>
+            <span class="piatto__prezzo">R$ 290</span>
+            <p class="piatto__desc">Uva: Chardonnay Mendoza - Catena Zapata | Teor Alc.: 13,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">França Petit Chablis</p>
+            <span class="piatto__prezzo">R$ 499</span>
+            <p class="piatto__desc">Uva: Chardonnay Bourgogne - André Goichot | Teor Alc.: 13%</p>
+          </div>
+        </div>
+        <div class="portata">
+          <div class="portata__head"><h3>Vinhos Meias garrafas</h3><span>3 opções</span></div>
+          <div class="piatto">
+            <p class="piatto__nome">Vinho fortificado</p>
+            <span class="piatto__prezzo">R$ 28</span>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">BRANCO Meia garrafa 375ml</p>
+            <span class="piatto__prezzo">R$ 60</span>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">TINTO Meia garrafa 375ml</p>
+            <span class="piatto__prezzo">R$ 60</span>
+          </div>
+        </div>
+        <div class="portata">
+          <div class="portata__head"><h3>Espumantes</h3><span>4 opções</span></div>
+          <div class="piatto">
+            <p class="piatto__nome">Brasil 1913 Sparkling Brut</p>
+            <span class="piatto__prezzo">R$ 130</span>
+            <p class="piatto__desc">Uva: Chardonnay Serra Gaúcha/RS - Basso | Teor Alc.: 11,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Brasil 1913 Sparkling Moscatel</p>
+            <span class="piatto__prezzo">R$ 130</span>
+            <p class="piatto__desc">Uva: Moscato Bianco &amp; Moscato Giallo Serra Gaúcha/RS - Basso | Teor Alc.: 7,5%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Brasil 1913 Sparkling Prosecco</p>
+            <span class="piatto__prezzo">R$ 130</span>
+            <p class="piatto__desc">Uva: Glera Serra Gaúcha/RS - Basso | Teor Alc.: 11,7%</p>
+          </div>
+          <div class="piatto">
+            <p class="piatto__nome">Brasil Chandon Brut Rosé</p>
+            <span class="piatto__prezzo">R$ 240</span>
+            <p class="piatto__desc">Uva: Pinot Noir, Riesling Itálico, Chardonnay Serra Gaúcha/RS - Chandon | Teor Alc.: 11,9%</p>
+          </div>
+        </div>
+        <div class="portata">
+          <div class="portata__head"><h3>Champagne</h3><span>1 opção</span></div>
+          <div class="piatto">
+            <p class="piatto__nome">Piper Heidsieck</p>
+            <span class="piatto__prezzo">R$ 850</span>
+            <p class="piatto__desc">Uva: Pinot Noir, Pinot Meunier &amp; Chardonnay Champagne - Piper Heidsieck Teor Alc.: 12%</p>
+          </div>
+        </div>
+      </div>
+      <!-- SAIPOS:VINHOS:FIM -->
+  </div>
+</section>
+
+<!-- ═══ ambiente ═══ -->
+<section class="block crema" id="ambiente">
+  <div class="wrap">
+    <span class="occhiello">Ambiente</span>
+    <h2 style="margin-bottom:18px">Salão, varanda e a <i>tavolata</i></h2>
+    <p class="sotto" style="margin-bottom:44px">Sessenta lugares no salão, vinte na varanda coberta e a mesa comunitária de doze lugares no meio da casa.</p>
+    <div class="scatti">
+      <div class="scatto scatto--largo"><span>Foto — salão</span></div>
+      <div class="scatto"><span>Foto — forno a lenha</span></div>
+      <div class="scatto"><span>Foto — tavolata</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ eventos ═══ -->
+<section class="block verde" id="eventi">
+  <div class="wrap">
+    <span class="occhiello">Eventi</span>
+    <h2 style="margin-bottom:44px">Almoço de empresa, casamento pequeno, aniversário</h2>
+    <div class="sale">
+      <div class="sala">
+        <b>20</b>
+        <h3>Varanda fechada</h3>
+        <p>Área coberta com mesa única, ideal para almoço de empresa ou comemoração em família.</p>
+      </div>
+      <div class="sala">
+        <b>80</b>
+        <h3>Casa inteira</h3>
+        <p>Regime exclusivo com menu montado junto com a cozinha e o forno funcionando a noite toda.</p>
+      </div>
+      <div class="sala">
+        <b>24h</b>
+        <h3>Proposta no mesmo dia</h3>
+        <p>Você manda a data e o número de convidados; devolvemos o orçamento em até um dia útil.</p>
+      </div>
+    </div>
+    <div class="riga">
+      <a class="btn" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20evento%20no%20Forneatto." target="_blank" rel="noopener">Pedir orçamento</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ agenda ═══
+     Nasce escondida: /assets/agenda/agenda.js só mostra a seção se a casa
+     tiver atração publicada no painel. Agenda vazia diz ao cliente "não
+     acontece nada aqui" — pior do que não ter agenda. -->
+<section class="block crema agd-secao" id="agenda" hidden>
+  <div class="wrap" style="margin-bottom:44px">
+    <span class="occhiello">Agenda</span>
+    <h2>Questa settimana · Nesta semana</h2>
+    <p class="piccolo" style="margin-top:18px">Noite do vinho, menu do chef e o que mais estiver acontecendo na casa.</p>
+  </div>
+  <div class="agd" data-agenda="forneatto"></div>
+</section>
+
+<!-- ═══ reservar ═══ -->
+<section class="block crema" id="reservar">
+  <div class="wrap">
+    <span class="occhiello">Reserva</span>
+    <h2>Prenotare · Reservar mesa</h2>
+    <p class="piccolo" style="margin:18px 0 34px">Sem conversa e sem esperar resposta: escolha o dia, a hora e quantas pessoas. A casa confirma em seguida. Aceitamos reserva para almoço e jantar.</p>
+
+    <!-- O formulário é montado por /assets/reserva/reserva.js. Enquanto
+         ele não carrega — e se o sistema estiver fora do ar — o que fica
+         na tela é o link abaixo: a casa nunca deixa de receber reserva
+         por causa de um script. -->
+    <div data-reserva="forneatto" data-whatsapp="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20reservar%20uma%20mesa%20no%20Forneatto.">
+      <p class="rsv-sem-js">
+        <a class="btn" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20reservar%20uma%20mesa%20no%20Forneatto." target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ onde ═══ -->
+<section class="block" id="dove">
+  <div class="wrap duo" style="align-items:start">
+    <div>
+      <span class="occhiello">Onde estamos</span>
+      <h2>Ao lado do Shopping Três Américas</h2>
+      <p class="sotto" style="margin-top:20px">Av. Brasília, 177 — Bloco A, Lojas 116 e 117<br>Jardim das Américas · Cuiabá/MT</p>
+      <p class="piccolo"><b>Qual das três é a nossa:</b> somos a última à direita de quem olha da rua. O vizinho é o Kikiu, e na outra ponta fica o Saikō.</p>
+      <p class="piccolo">Estacionamento com manobrista na porta. Aceitamos reserva para almoço e jantar.</p>
+      <ul class="orari">
+        <li><b>Terça a quinta</b><span>12h00 — 15h00 · 19h00 — 23h00</span></li>
+        <li><b>Sexta e sábado</b><span>12h00 — 15h30 · 19h00 — 00h00</span></li>
+        <li><b>Domingo</b><span>12h00 — 17h00</span></li>
+        <li><b>Segunda</b><span>Fechado</span></li>
+      </ul>
+      <div class="riga">
+        <a class="btn btn--vuoto" style="color:var(--verde)" href="https://maps.google.com/?q=Av.+Bras%C3%ADlia%2C+177+-+Jardim+das+Am%C3%A9ricas%2C+Cuiab%C3%A1+-+MT" target="_blank" rel="noopener">Abrir no Google Maps</a>
+      </div>
+    </div>
+    <!-- TROCAR pelo <iframe> que o Google Maps gera em Compartilhar → Incorporar -->
+    <div class="mappa"><span>Mapa — Google Maps</span></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="piede">
+  <div class="wrap">
+    <div class="piede__grid">
+      <div>
+        <span class="marchio__nome" style="font-size:20px">FORNEATTO</span>
+        <p style="font-size:13.5px;margin-top:12px">Cucina · Cozinha Italiana<br>Jardim das Américas · Cuiabá/MT</p>
+      </div>
+      <div>
+        <span class="occhiello">Contato</span>
+        <p style="font-size:14.5px"><a href="https://wa.me/5500000000000">WhatsApp (00) 00000-0000</a><br><a href="mailto:contato@forneatto.com.br">contato@forneatto.com.br</a></p>
+      </div>
+      <div>
+        <span class="occhiello">Siga</span>
+        <p style="font-size:14.5px"><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a><br><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></p>
+      </div>
+      <div>
+        <span class="occhiello">Nossas casas</span>
+        <p class="sorelle" style="font-size:14.5px">
+          <a href="https://saiko.com.br" target="_blank" rel="noopener">Saikō</a>
+          <a href="https://kikiu.com.br" target="_blank" rel="noopener">Kikiu</a>
+        </p>
+      </div>
+    </div>
+    <div class="piede__fine">
+      <span>© 2026 Forneatto Cucina · CNPJ 60.690.262/0001-57</span>
+      <span>Site por <a href="https://fjntecnologia.com.br" target="_blank" rel="noopener">FJN Tecnologia</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Forneatto." target="_blank" rel="noopener" aria-label="Reservar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01a9.9 9.9 0 0 0 9.9-9.9A9.9 9.9 0 0 0 12.04 2Zm5.8 14.05c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.32-.7-2.8-1.1-4.57-3.98-4.71-4.17-.14-.19-1.13-1.5-1.13-2.87s.72-2.03.97-2.31c.25-.28.55-.35.73-.35h.52c.17 0 .4-.06.62.48.24.57.8 1.98.87 2.12.07.14.12.31.02.5-.1.19-.15.31-.29.47-.14.17-.3.37-.43.5-.14.14-.29.29-.12.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.62-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.64-.14.26.09 1.66.78 1.94.93.28.14.47.21.54.33.07.12.07.68-.17 1.36Z"/></svg>
+  <span>Reservar</span>
+</a>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Forneatto Cucina",
+  "image": "https://forneattocucina.com.br/assets/img/italiano/og.jpg",
+  "url": "https://forneattocucina.com.br",
+  "telephone": "+5500000000000",
+  "servesCuisine": ["Italiana", "Pizza"],
+  "priceRange": "$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Brasília, 177",
+    "addressLocality": "Cuiabá",
+    "addressRegion": "MT",
+    "postalCode": "78060-601",
+    "addressCountry": "BR"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "23:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "23:59" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "12:00", "closes": "17:00" }
+  ],
+  "acceptsReservations": "True",
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://forneattocucina.com.br/#reservar",
+      "inLanguage": "pt-BR",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/IOSPlatform",
+        "http://schema.org/AndroidPlatform"
+      ]
+    },
+    "result": { "@type": "FoodEstablishmentReservation", "name": "Reserva de mesa" }
+  },
+  "hasMenu": "https://forneattocucina.com.br/#carta"
+}
+</script>
+
+<!-- SAIPOS:JSONLD:INICIO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "Cardapio do Forneatto Cucina",
+  "inLanguage": "pt-BR",
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Vinho Tinto",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Chile Casas del Maipo",
+          "description": "Uva: Cabernet Sauvignon Vale do Maule - CWC | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "110.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina 4 Estaciones Autumn",
+          "description": "Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "120.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Portugal Esperança Alentejo",
+          "description": "Uva: Aragonez, Trincadeira & Castelão Alentejo - Segur Estates | Teor Alc.: 13,5% Amadurecimento: 06 meses",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "135.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chile Chaka (Carmenere)",
+          "description": "Uva: Carmenere Vale Central - Vina Marty | Teor Alc.: 14%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "140.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chile Chaka (Merlot)",
+          "description": "Uva: Merlot Vale Central - Vina Marty | Teor Alc.: 14%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "140.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Brasil 1550 BRAS Reserva",
+          "description": "Uva: Cabernet Sauvignon Farroupilha/RS - Basso | Teor Alc.: 13,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "149.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chile Casas del Maipo Reserva",
+          "description": "Uva: Pinot Noir Vale do Maule - CWC | Teor Alc.: 13,5% Amadurecimento: 09 meses",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "150.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina Vasco Viejo",
+          "description": "Uva: Malbec Mendoza - Bodegas Lopez | Teor Alc.: 14% Amadurecimento: 03 meses em barricas",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "160.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "França Le Petit Maynne Bordeaux",
+          "description": "Uva: Merlot, Cabernet Sauvignon e Cabernet Franc Bordeaux - Petit Maynne | Teor Alc.: 13,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "170.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina Malacara (Malbec)",
+          "description": "Uva: Malbec Mendoza - Kauzo Estates | Teor Alc.: 14%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "180.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina Malacara (Cabernet Sauvignon)",
+          "description": "Uva: Cabernet Sauvignon Mendoza - Kauzo Estates | Teor Alc.: 13,8%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "180.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Itália Toso Barbera DOCG",
+          "description": "Uva: Barbera Piemonte - Toso | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "190.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina 4 Estaciones Icon Blend",
+          "description": "Uva: Malbec, Cabernet Sauvignon e Petit Verdot Vale do Uco - Tittarelli | Teor Alc.: 14% Amadurecimento: 06 meses em barricas",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "190.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Espanha Aradon",
+          "description": "Uva: 90% Tempranillo e 10% Garnacha D.O. Rioja - Bodegas Aradon | Teor Alc.: 14% Amadurecimento: 04 meses",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "200.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Itália Chianti",
+          "description": "Uva: Sangiovese Toscana - Sensi | Teor Alc.: 14%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "210.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "França Côtes du Rhône Urbain V",
+          "description": "Uva: Grenache, Syrah e Mourvèdre Côtes du Rhône - Urbain V | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "220.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Itália Luccarelli Primitivo Puglia",
+          "description": "Uva: Primitivo Puglia - Luccarelli | Teor Alc.: 13,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "240.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chile Casa Donoso Bourbon",
+          "description": "Uva: Cabernet Sauvignon Vale Central - Casa Donoso | Teor Alc.: 13,5% Amadurecimento: 6-8 meses barricas Bourbon",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "250.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chile Montes Alpha",
+          "description": "Uva: Carménère Valle del Aconcágua - Viña Montes | Teor Alc.: 14,5% Amadurecimento: 12 meses em barricas",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "360.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina Angelica Zapata",
+          "description": "Uva: Malbec Mendoza - Catena Zapata | Teor Alc.: 13,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "420.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Itália 1400 Vulcanici DOC Primitivo di Manduria",
+          "description": "Uva: Primitivo Puglia - Vinícola Manieri | Teor Alc.: 14,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "1090.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Itália Barolo",
+          "description": "Uva: Nebbiolo Piemonte - Sensi | Teor Alc.: 14,5% Amadurecimento: 24 meses",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "1090.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Vinho Branco",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Chile Casas del Maipo",
+          "description": "Uva: Sauvignon Blanc Vale do Maule - CWC | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "110.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina 4 Estaciones Summer",
+          "description": "Uva: Torrontes Mendoza - Tittarelli | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "120.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "ROSÉ 4 Estaciones Spring Rose",
+          "description": "Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "125.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chile Chaka",
+          "description": "Uva: Chardonnay Vale Central - Vina Marty | Teor Alc.: 13,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "140.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Itália Collezione",
+          "description": "Uva: Pinot Grigio Veneto - Sensi | Teor Alc.: 12,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "199.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Uruguai Toscanini Reserve",
+          "description": "Uva: Chardonnay Paso Cuello, Canelones - Toscanini | Teor Alc.: 13,5% Amadurecimento: 10 meses em barricas",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "200.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Françа Chateau Bellevue Rougier Blanc",
+          "description": "Uva: Semillion, Muscadelle e Sauvignon Blanc Bordeaux - Terre de Vignerons | Teor Alc.: 11,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "210.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "ROSÉ Susana Balbo",
+          "description": "Uva: Malbec e Pinot Noir Valle De Uco - Susana Balbo Teor Alc.: 12%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "260.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Argentina Angelica Zapata",
+          "description": "Uva: Chardonnay Mendoza - Catena Zapata | Teor Alc.: 13,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "290.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "França Petit Chablis",
+          "description": "Uva: Chardonnay Bourgogne - André Goichot | Teor Alc.: 13%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "499.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Vinhos Meias garrafas",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Vinho fortificado",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "28.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "BRANCO Meia garrafa 375ml",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "60.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "TINTO Meia garrafa 375ml",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "60.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Espumantes",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Brasil 1913 Sparkling Brut",
+          "description": "Uva: Chardonnay Serra Gaúcha/RS - Basso | Teor Alc.: 11,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "130.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Brasil 1913 Sparkling Moscatel",
+          "description": "Uva: Moscato Bianco & Moscato Giallo Serra Gaúcha/RS - Basso | Teor Alc.: 7,5%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "130.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Brasil 1913 Sparkling Prosecco",
+          "description": "Uva: Glera Serra Gaúcha/RS - Basso | Teor Alc.: 11,7%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "130.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Brasil Chandon Brut Rosé",
+          "description": "Uva: Pinot Noir, Riesling Itálico, Chardonnay Serra Gaúcha/RS - Chandon | Teor Alc.: 11,9%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "240.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Champagne",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Piper Heidsieck",
+          "description": "Uva: Pinot Noir, Pinot Meunier & Chardonnay Champagne - Piper Heidsieck Teor Alc.: 12%",
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "850.00",
+              "priceCurrency": "BRL"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+      <!-- SAIPOS:JSONLD:FIM -->
+<script src="assets/reserva/reserva.js" defer></script>
+<script src="assets/agenda/agenda.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://forneattocucina.com.br/sitemap.xml

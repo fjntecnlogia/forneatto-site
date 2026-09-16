@@ -1,0 +1,17 @@
+{
+  "_leia": "Fonte unica dos dominios DESTA casa. Rodar scripts/aplicar-dominios.mjs depois de mudar.",
+  "_regra": "'dominio' e o principal: canonical, Open Graph, JSON-LD, sitemap e Google Meu Negocio. Os de 'alternativos' apenas redirecionam 301 — nunca servem conteudo.",
+  "casa": {
+    "id": "forneatto",
+    "nome": "Forneatto Cucina",
+    "dominio": "forneattocucina.com.br",
+    "alternativos": [
+      "forneato.com.br"
+    ],
+    "ga4": "",
+    "searchConsole": "",
+    "_nota": "ATENÇÃO: forneato.com.br está escrito com um T só — não bate com a marca FORNEATTO. Serve como caça-erro de digitação, nunca como principal.",
+    "imagens": "italiano"
+  },
+  "_imagens": "A pasta desta casa dentro de assets/img (hero.jpg, og.jpg)."
+}
