@@ -299,6 +299,13 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 
 :focus-visible { outline: 2px solid var(--rosso); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+  /* O botao flutuante do WhatsApp mora no canto inferior direito e passava
+     POR CIMA do fim do rodape — medido no navegador: o link do rodape ia
+     ate x 1153 e o botao comecava em x 1104. Este espaco e a largura do
+     botao mais a folga dele. */
+  .piede__fine { padding-right: clamp(0px, 100vw - 640px, 92px); }
+  @media (max-width: 640px) { .piede__fine { padding-right: 0; padding-bottom: 76px; } }
 </style>
 </head>
 <body>
@@ -740,7 +747,7 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
       <div>
         <span class="occhiello">Nossas casas</span>
         <p class="sorelle" style="font-size:14.5px">
-          <a href="https://saiko.com.br" target="_blank" rel="noopener">Saikō</a>
+          <a href="https://saikogastronomia.com.br" target="_blank" rel="noopener">Saikō</a>
           <a href="https://kikiu.com.br" target="_blank" rel="noopener">Kikiu</a>
         </p>
       </div>
@@ -748,7 +755,9 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
     <div class="piede__fine">
       <span>© 2026 Forneatto Cucina · CNPJ 60.690.262/0001-57</span>
       <span>Site por <a href="https://fjntecnologia.com.br" target="_blank" rel="noopener">FJN Tecnologia</a></span>
-    </div>
+    
+        <span><a href="https://painel.kikiu.com.br" style="opacity:.55">Gestão das casas</a></span>
+      </div>
   </div>
 </footer>
 
