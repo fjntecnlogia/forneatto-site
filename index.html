@@ -250,7 +250,14 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 .scatti { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
 .scatto {
   aspect-ratio: 4/5; background: var(--crema); border: 1px solid var(--filo);
-  display: grid; place-items: center;
+  display: grid; place-items: center; position: relative; overflow: hidden;
+}
+/* A foto cobre a moldura e esconde a legenda de "falta foto". Se o arquivo
+   nao existir, o onerror tira o <img> do caminho e a legenda volta sozinha —
+   da para publicar a moldura antes da foto chegar, sem icone quebrado. */
+.scatto img, .facciata img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
 }
 .scatto--largo { aspect-ratio: 16/10; grid-column: span 2; }
 @media (max-width: 640px) { .scatto--largo { grid-column: span 1; } }
@@ -272,6 +279,14 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 .orari span { color: var(--grigio); font-variant-numeric: tabular-nums; }
 .mappa { aspect-ratio: 4/3; width: 100%; border: 1px solid var(--filo); background: var(--crema); display: grid; place-items: center; }
 .mappa span { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #a89e8c; }
+/* ── fachada ──────────────────────────────────────────────────── */
+/* Retrato: porta de rua e alta, e a fachada deitada corta o letreiro. */
+.facciata {
+  position: relative; aspect-ratio: 3/4; width: 100%; margin: 0 0 24px;
+  border: 1px solid var(--filo); background: var(--crema);
+  display: grid; place-items: center; overflow: hidden;
+}
+.facciata span { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #a89e8c; text-align: center; padding: 14px; }
 
 /* ── rodapé ───────────────────────────────────────────────────── */
 .piede { background: var(--verde-deep); color: rgba(251,248,241,.72); padding-block: 62px 30px; }
@@ -662,9 +677,18 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
     <h2 style="margin-bottom:18px">Salão, varanda e a <i>tavolata</i></h2>
     <p class="sotto" style="margin-bottom:44px">Sessenta lugares no salão, vinte na varanda coberta e a mesa comunitária de doze lugares no meio da casa.</p>
     <div class="scatti">
-      <div class="scatto scatto--largo"><span>Foto — salão</span></div>
-      <div class="scatto"><span>Foto — forno a lenha</span></div>
-      <div class="scatto"><span>Foto — tavolata</span></div>
+      <figure class="scatto scatto--largo">
+        <img src="assets/img/italiano/salao.jpg" alt="Salão do Forneatto" loading="lazy" onerror="this.remove()">
+        <span>Foto — salão</span>
+      </figure>
+      <figure class="scatto">
+        <img src="assets/img/italiano/forno.jpg" alt="Forno a lenha do Forneatto" loading="lazy" onerror="this.remove()">
+        <span>Foto — forno a lenha</span>
+      </figure>
+      <figure class="scatto">
+        <img src="assets/img/italiano/tavolata.jpg" alt="Tavolata — a mesa comunitária do Forneatto" loading="lazy" onerror="this.remove()">
+        <span>Foto — tavolata</span>
+      </figure>
     </div>
   </div>
 </section>
@@ -722,8 +746,17 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
         <a class="btn btn--vuoto" style="color:var(--verde)" href="https://maps.google.com/?q=Av.+Bras%C3%ADlia%2C+177+-+Jardim+das+Am%C3%A9ricas%2C+Cuiab%C3%A1+-+MT" target="_blank" rel="noopener">Abrir no Google Maps</a>
       </div>
     </div>
-    <!-- TROCAR pelo <iframe> que o Google Maps gera em Compartilhar → Incorporar -->
-    <div class="mappa"><span>Mapa — Google Maps</span></div>
+    <div>
+      <!-- A fachada vem ANTES do mapa: o mapa diz onde fica, a foto diz o que
+           procurar. Sao tres casas na mesma calcada, e o texto ao lado ja
+           explica "somos a ultima a direita" — isso e uma foto. -->
+      <figure class="facciata">
+        <img src="assets/img/italiano/porta.jpg" alt="Fachada do Forneatto" loading="lazy" onerror="this.remove()">
+        <span>Foto — fachada</span>
+      </figure>
+      <!-- TROCAR pelo <iframe> que o Google Maps gera em Compartilhar → Incorporar -->
+      <div class="mappa"><span>Mapa — Google Maps</span></div>
+    </div>
   </div>
 </section>
 
