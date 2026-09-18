@@ -248,6 +248,61 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 
 /* ── galeria ──────────────────────────────────────────────────── */
 .scatti { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+/* ── destaques ────────────────────────────────────────────────────
+   A secao "O que servimos" prometia o cardapio e estava VAZIA no ar: o PDV
+   nao tem um unico prato do Forneatto cadastrado (so vinho), e o bloco que
+   o sync preenche nasceu e ficou em branco. Promessa vazia e pior que
+   secao ausente. Enquanto nao ha prato no PDV nem foto, ficam quatro
+   molduras com o nome do que a casa faz — sem preco inventado. */
+.destaques {
+  display: grid; gap: clamp(16px, 2vw, 26px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 232px), 1fr));
+}
+.destaque { margin: 0; opacity: 0; transform: translateY(20px); }
+.destaque.visivel { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+.destaque__foto {
+  position: relative; aspect-ratio: 3/4; overflow: hidden;
+  background: var(--crema); border: 1px solid var(--filo);
+  display: grid; place-items: center;
+}
+.destaque__foto img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .9s cubic-bezier(.2,.7,.3,1);
+}
+.destaque:hover .destaque__foto img { transform: scale(1.045); }
+.destaque__foto span {
+  font-size: 9px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: #a89e8c; text-align: center; padding: 12px;
+}
+.destaque__nome { font-size: 17px; font-weight: 700; margin: 15px 0 0; }
+.destaque__desc { font-size: 13.5px; color: #6f6455; line-height: 1.68; margin-top: 7px; }
+
+/* ── o topo respira ───────────────────────────────────────────────
+   Uma luz quente atravessa o fundo em 19s, como o forno visto de longe.
+   Fica atras de tudo e nunca disputa com o texto: rapido demais vira
+   banner, e banner ninguem le. */
+.hero { position: relative; overflow: hidden; }
+.hero::after {
+  content: ""; position: absolute; inset: -20% -40%; z-index: 0; pointer-events: none;
+  background: radial-gradient(40% 44% at 50% 50%, rgba(196,22,28,.10), transparent 70%);
+  animation: brasa 19s ease-in-out infinite;
+}
+.hero > .wrap { position: relative; z-index: 1; }
+@keyframes brasa {
+  0%, 100% { transform: translate(-18%, 6%); }
+  50%      { transform: translate(18%, -6%); }
+}
+
+.sobe { opacity: 0; transform: translateY(18px); }
+.sobe.visivel { opacity: 1; transform: none; transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.3,1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::after { animation: none; }
+  .sobe, .destaque { opacity: 1; transform: none; }
+  .destaque:hover .destaque__foto img { transform: none; }
+}
+
 .scatto {
   margin: 0;   /* <figure> nasce com margin: 1em 40px e encolhe a foto */
   aspect-ratio: 4/5; background: var(--crema); border: 1px solid var(--filo);
@@ -361,20 +416,20 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
-      <span class="occhiello" style="color:#8fd6a5">Cucina italiana · Cuiabá</span>
-      <h1>Noventa segundos<br>a <i>450 graus</i>.</h1>
-      <p class="sotto">É o tempo que a pizza napolitana passa no forno a lenha — e o motivo de a borda sair alta, macia e com a marca do fogo. A massa descansa vinte e quatro horas antes de chegar lá.</p>
-      <div class="riga">
+      <span class="occhiello sobe" style="color:#8fd6a5;transition-delay:60ms">Cucina italiana · Cuiabá</span>
+      <h1 class="sobe" style="transition-delay:160ms">Noventa segundos<br>a <i>450 graus</i>.</h1>
+      <p class="sotto sobe" style="transition-delay:280ms">É o tempo que a pizza napolitana passa no forno a lenha — e o motivo de a borda sair alta, macia e com a marca do fogo. A massa descansa vinte e quatro horas antes de chegar lá.</p>
+      <div class="riga sobe" style="transition-delay:390ms">
         <a class="btn" href="#reservar">Reservar mesa</a>
         <a class="btn btn--vuoto" href="#carta">Ver o cardápio</a>
       </div>
-      <div class="hero__meta">
+      <div class="hero__meta sobe" style="transition-delay:490ms">
         <span>Ter a Dom · almoço e jantar</span>
         <span>Forno a lenha</span>
         <span>Ao lado do Shopping Três Américas</span>
       </div>
     </div>
-    <div class="fetta" aria-hidden="true">
+    <div class="fetta sobe" aria-hidden="true" style="transition-delay:600ms">
       <svg viewBox="0 0 240 240">
         <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(251,248,241,.22)" stroke-width="1.5"/>
         <circle cx="120" cy="120" r="88" fill="#c4161c"/>
@@ -416,17 +471,57 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
   <div class="wrap">
     <span class="occhiello">La carta</span>
     <h2 style="margin-bottom:20px">O que servimos</h2>
-    <p class="sotto" style="margin-bottom:clamp(40px,5vw,68px)">Uma seleção da carta. O menu completo tem antipasti, risotos, secondi e uma página só de dolci.</p>
+    <p class="sotto" style="margin-bottom:clamp(40px,5vw,68px)">O forno, a massa e a mesa grande. O cardápio inteiro está na casa — e a carta de vinhos, logo abaixo.</p>
 
-    <div class="carta">
+    <!-- Sem preco: o PDV nao tem um unico prato do Forneatto cadastrado,
+         so vinho. Preco aqui seria preco digitado a mao, que e exatamente o
+         que o projeto nao faz. Quando os pratos entrarem no PDV e as fotos
+         chegarem, cada moldura enche sozinha pelo nome do arquivo. -->
+
+    <!-- O cardapio saiu da vitrine, mas os marcadores do Saipos continuam
+         aqui, escondidos. O scripts/sync-cardapio.mjs injeta entre eles, e
+         se nao os encontrar ele LANCA — derrubando a sincronizacao inteira
+         desta casa, inclusive as regioes que ainda importam. Container
+         hidden: o sync escreve, ninguem ve, nada quebra. Apagar so junto
+         com a regiao correspondente no ROTEAMENTO do script. -->
+    <div hidden data-saipos="menu">
       <!-- SAIPOS:MENU:INICIO -->
-      <div>
-
-      </div>
-      <div>
-
-      </div>
       <!-- SAIPOS:MENU:FIM -->
+    </div>
+
+    <div class="destaques">
+      <figure class="destaque" style="transition-delay:0ms">
+        <div class="destaque__foto">
+          <img src="assets/img/italiano/pizza.jpg" alt="Pizza napolitana" loading="lazy" onerror="this.remove()">
+          <span>Foto — Pizza napolitana</span>
+        </div>
+        <p class="destaque__nome">Pizza napolitana</p>
+        <p class="destaque__desc">Noventa segundos a 450 graus no forno a lenha. A massa descansa vinte e quatro horas antes de entrar.</p>
+      </figure>
+      <figure class="destaque" style="transition-delay:90ms">
+        <div class="destaque__foto">
+          <img src="assets/img/italiano/massa.jpg" alt="Massa fresca" loading="lazy" onerror="this.remove()">
+          <span>Foto — Massa fresca</span>
+        </div>
+        <p class="destaque__nome">Massa fresca</p>
+        <p class="destaque__desc">Feita todo dia na casa.</p>
+      </figure>
+      <figure class="destaque" style="transition-delay:180ms">
+        <div class="destaque__foto">
+          <img src="assets/img/italiano/forno.jpg" alt="O forno a lenha" loading="lazy" onerror="this.remove()">
+          <span>Foto — O forno a lenha</span>
+        </div>
+        <p class="destaque__nome">O forno a lenha</p>
+        <p class="destaque__desc">O fogo que dá a borda alta e a marca escura.</p>
+      </figure>
+      <figure class="destaque" style="transition-delay:270ms">
+        <div class="destaque__foto">
+          <img src="assets/img/italiano/tavolata.jpg" alt="A tavolata" loading="lazy" onerror="this.remove()">
+          <span>Foto — A tavolata</span>
+        </div>
+        <p class="destaque__nome">A tavolata</p>
+        <p class="destaque__desc">A mesa comunitária de doze lugares, no meio da casa.</p>
+      </figure>
     </div>
 
   </div>
@@ -1361,6 +1456,30 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 }
 </script>
       <!-- SAIPOS:JSONLD:FIM -->
+<!-- Entrada em cascata dos blocos quando entram na tela. O site inteiro
+     funciona sem este script: sem ele ninguem recebe .visivel, e a regra de
+     fallback deixa tudo visivel. -->
+<script>
+(function () {
+  var alvos = document.querySelectorAll('.sobe, .destaque');
+  if (!alvos.length) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    alvos.forEach(function (e) { e.classList.add('visivel'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (itens) {
+    itens.forEach(function (i) {
+      if (!i.isIntersecting) return;
+      i.target.classList.add('visivel');
+      obs.unobserve(i.target);   // anima uma vez; repetir a cada rolagem cansa
+    });
+    // threshold 0, e nao 0.15: bloco mais alto que a janela nunca alcanca
+    // 15% e ficaria invisivel para sempre. Com 0 basta um pixel. O
+    // rootMargin negativo comeca a entrada um pouco antes de encostar.
+  }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+  alvos.forEach(function (e) { obs.observe(e); });
+})();
+</script>
 <script src="assets/reserva/reserva.js" defer></script>
 <script src="assets/agenda/agenda.js" defer></script>
 </body>
