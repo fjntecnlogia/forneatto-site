@@ -249,6 +249,7 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 /* ── galeria ──────────────────────────────────────────────────── */
 .scatti { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
 .scatto {
+  margin: 0;   /* <figure> nasce com margin: 1em 40px e encolhe a foto */
   aspect-ratio: 4/5; background: var(--crema); border: 1px solid var(--filo);
   display: grid; place-items: center; position: relative; overflow: hidden;
 }
@@ -282,7 +283,7 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
 /* ── fachada ──────────────────────────────────────────────────── */
 /* Retrato: porta de rua e alta, e a fachada deitada corta o letreiro. */
 .facciata {
-  position: relative; aspect-ratio: 3/4; width: 100%; margin: 0 0 24px;
+  position: relative; aspect-ratio: 9/14; width: 100%; margin: 0 0 24px;
   border: 1px solid var(--filo); background: var(--crema);
   display: grid; place-items: center; overflow: hidden;
 }
