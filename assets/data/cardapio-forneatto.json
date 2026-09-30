@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-09-15T23:10:45.367Z",
+  "gerado_em": "2026-09-30T18:38:25.087Z",
   "fonte": "https://delivery-api.saipos.com/v1/stores/93572/sales/view-data",
   "loja": {
     "id_store": 93572,
@@ -11,34 +11,21 @@
     "pedido_online_ativo": false
   },
   "cardapio": {
-    "vinhos": [
+    "menu": [
       {
         "nome": "Vinho Tinto",
         "ordem": 8,
         "itens": [
           {
-            "id": 40920903,
-            "nome": "Chile Casas del Maipo",
-            "descricao": "Uva: Cabernet Sauvignon Vale do Maule - CWC | Teor Alc.: 13%",
-            "ordem": 16,
+            "id": 40921033,
+            "nome": "Chile Casa Donoso Bourbon",
+            "descricao": "Uva: Cabernet Sauvignon Vale Central - Casa Donoso | Teor Alc.: 13,5% Amadurecimento: 6-8 meses barricas Bourbon",
+            "ordem": 0,
             "foto": null,
             "variacoes": [
               {
                 "nome": "Único",
-                "preco": 110
-              }
-            ]
-          },
-          {
-            "id": 40920912,
-            "nome": "Argentina 4 Estaciones Autumn",
-            "descricao": "Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%",
-            "ordem": 10,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 120
+                "preco": 250
               }
             ]
           },
@@ -56,28 +43,119 @@
             ]
           },
           {
-            "id": 40920888,
-            "nome": "Chile Chaka (Carmenere)",
-            "descricao": "Uva: Carmenere Vale Central - Vina Marty | Teor Alc.: 14%",
-            "ordem": 17,
+            "id": 40921032,
+            "nome": "Chile Montes Alpha",
+            "descricao": "Uva: Carménère Valle del Aconcágua - Viña Montes | Teor Alc.: 14,5% Amadurecimento: 12 meses em barricas",
+            "ordem": 1,
             "foto": null,
             "variacoes": [
               {
                 "nome": "Único",
-                "preco": 140
+                "preco": 360
               }
             ]
           },
           {
-            "id": 40920853,
-            "nome": "Chile Chaka (Merlot)",
-            "descricao": "Uva: Merlot Vale Central - Vina Marty | Teor Alc.: 14%",
-            "ordem": 18,
+            "id": 40920924,
+            "nome": "Espanha Aradon",
+            "descricao": "Uva: 90% Tempranillo e 10% Garnacha D.O. Rioja - Bodegas Aradon | Teor Alc.: 14% Amadurecimento: 04 meses",
+            "ordem": 1,
             "foto": null,
             "variacoes": [
               {
                 "nome": "Único",
-                "preco": 140
+                "preco": 200
+              }
+            ]
+          },
+          {
+            "id": 40920895,
+            "nome": "França Le Petit Maynne Bordeaux",
+            "descricao": "Uva: Merlot, Cabernet Sauvignon e Cabernet Franc Bordeaux - Petit Maynne | Teor Alc.: 13,5%",
+            "ordem": 2,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 170
+              }
+            ]
+          },
+          {
+            "id": 40920881,
+            "nome": "França Côtes du Rhône Urbain V",
+            "descricao": "Uva: Grenache, Syrah e Mourvèdre Côtes du Rhône - Urbain V | Teor Alc.: 13%",
+            "ordem": 3,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 220
+              }
+            ]
+          },
+          {
+            "id": 40920875,
+            "nome": "Itália Chianti",
+            "descricao": "Uva: Sangiovese Toscana - Sensi | Teor Alc.: 14%",
+            "ordem": 4,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 210
+              }
+            ]
+          },
+          {
+            "id": 40920879,
+            "nome": "Itália Toso Barbera DOCG",
+            "descricao": "Uva: Barbera Piemonte - Toso | Teor Alc.: 13%",
+            "ordem": 5,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 190
+              }
+            ]
+          },
+          {
+            "id": 40920854,
+            "nome": "Itália Luccarelli Primitivo Puglia",
+            "descricao": "Uva: Primitivo Puglia - Luccarelli | Teor Alc.: 13,5%",
+            "ordem": 6,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 240
+              }
+            ]
+          },
+          {
+            "id": 40920882,
+            "nome": "Itália 1400 Vulcanici DOC Primitivo di Manduria",
+            "descricao": "Uva: Primitivo Puglia - Vinícola Manieri | Teor Alc.: 14,5%",
+            "ordem": 7,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 1090
+              }
+            ]
+          },
+          {
+            "id": 40920906,
+            "nome": "Itália Barolo",
+            "descricao": "Uva: Nebbiolo Piemonte - Sensi | Teor Alc.: 14,5% Amadurecimento: 24 meses",
+            "ordem": 8,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 1090
               }
             ]
           },
@@ -95,15 +173,15 @@
             ]
           },
           {
-            "id": 40920904,
-            "nome": "Chile Casas del Maipo Reserva",
-            "descricao": "Uva: Pinot Noir Vale do Maule - CWC | Teor Alc.: 13,5% Amadurecimento: 09 meses",
-            "ordem": 19,
+            "id": 40920912,
+            "nome": "Argentina 4 Estaciones Autumn",
+            "descricao": "Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%",
+            "ordem": 10,
             "foto": null,
             "variacoes": [
               {
                 "nome": "Único",
-                "preco": 150
+                "preco": 120
               }
             ]
           },
@@ -117,19 +195,6 @@
               {
                 "nome": "Único",
                 "preco": 160
-              }
-            ]
-          },
-          {
-            "id": 40920895,
-            "nome": "França Le Petit Maynne Bordeaux",
-            "descricao": "Uva: Merlot, Cabernet Sauvignon e Cabernet Franc Bordeaux - Petit Maynne | Teor Alc.: 13,5%",
-            "ordem": 2,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 170
               }
             ]
           },
@@ -160,19 +225,6 @@
             ]
           },
           {
-            "id": 40920879,
-            "nome": "Itália Toso Barbera DOCG",
-            "descricao": "Uva: Barbera Piemonte - Toso | Teor Alc.: 13%",
-            "ordem": 5,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 190
-              }
-            ]
-          },
-          {
             "id": 40920928,
             "nome": "Argentina 4 Estaciones Icon Blend",
             "descricao": "Uva: Malbec, Cabernet Sauvignon e Petit Verdot Vale do Uco - Tittarelli | Teor Alc.: 14% Amadurecimento: 06 meses em barricas",
@@ -182,84 +234,6 @@
               {
                 "nome": "Único",
                 "preco": 190
-              }
-            ]
-          },
-          {
-            "id": 40920924,
-            "nome": "Espanha Aradon",
-            "descricao": "Uva: 90% Tempranillo e 10% Garnacha D.O. Rioja - Bodegas Aradon | Teor Alc.: 14% Amadurecimento: 04 meses",
-            "ordem": 1,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 200
-              }
-            ]
-          },
-          {
-            "id": 40920875,
-            "nome": "Itália Chianti",
-            "descricao": "Uva: Sangiovese Toscana - Sensi | Teor Alc.: 14%",
-            "ordem": 4,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 210
-              }
-            ]
-          },
-          {
-            "id": 40920881,
-            "nome": "França Côtes du Rhône Urbain V",
-            "descricao": "Uva: Grenache, Syrah e Mourvèdre Côtes du Rhône - Urbain V | Teor Alc.: 13%",
-            "ordem": 3,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 220
-              }
-            ]
-          },
-          {
-            "id": 40920854,
-            "nome": "Itália Luccarelli Primitivo Puglia",
-            "descricao": "Uva: Primitivo Puglia - Luccarelli | Teor Alc.: 13,5%",
-            "ordem": 6,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 240
-              }
-            ]
-          },
-          {
-            "id": 40921033,
-            "nome": "Chile Casa Donoso Bourbon",
-            "descricao": "Uva: Cabernet Sauvignon Vale Central - Casa Donoso | Teor Alc.: 13,5% Amadurecimento: 6-8 meses barricas Bourbon",
-            "ordem": 0,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 250
-              }
-            ]
-          },
-          {
-            "id": 40921032,
-            "nome": "Chile Montes Alpha",
-            "descricao": "Uva: Carménère Valle del Aconcágua - Viña Montes | Teor Alc.: 14,5% Amadurecimento: 12 meses em barricas",
-            "ordem": 1,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 360
               }
             ]
           },
@@ -277,28 +251,54 @@
             ]
           },
           {
-            "id": 40920882,
-            "nome": "Itália 1400 Vulcanici DOC Primitivo di Manduria",
-            "descricao": "Uva: Primitivo Puglia - Vinícola Manieri | Teor Alc.: 14,5%",
-            "ordem": 7,
+            "id": 40920903,
+            "nome": "Chile Casas del Maipo",
+            "descricao": "Uva: Cabernet Sauvignon Vale do Maule - CWC | Teor Alc.: 13%",
+            "ordem": 16,
             "foto": null,
             "variacoes": [
               {
                 "nome": "Único",
-                "preco": 1090
+                "preco": 110
               }
             ]
           },
           {
-            "id": 40920906,
-            "nome": "Itália Barolo",
-            "descricao": "Uva: Nebbiolo Piemonte - Sensi | Teor Alc.: 14,5% Amadurecimento: 24 meses",
-            "ordem": 8,
+            "id": 40920888,
+            "nome": "Chile Chaka (Carmenere)",
+            "descricao": "Uva: Carmenere Vale Central - Vina Marty | Teor Alc.: 14%",
+            "ordem": 17,
             "foto": null,
             "variacoes": [
               {
                 "nome": "Único",
-                "preco": 1090
+                "preco": 140
+              }
+            ]
+          },
+          {
+            "id": 40920853,
+            "nome": "Chile Chaka (Merlot)",
+            "descricao": "Uva: Merlot Vale Central - Vina Marty | Teor Alc.: 14%",
+            "ordem": 18,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 140
+              }
+            ]
+          },
+          {
+            "id": 40920904,
+            "nome": "Chile Casas del Maipo Reserva",
+            "descricao": "Uva: Pinot Noir Vale do Maule - CWC | Teor Alc.: 13,5% Amadurecimento: 09 meses",
+            "ordem": 19,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 150
               }
             ]
           }
@@ -308,19 +308,6 @@
         "nome": "Vinho Branco",
         "ordem": 11,
         "itens": [
-          {
-            "id": 40920877,
-            "nome": "Chile Casas del Maipo",
-            "descricao": "Uva: Sauvignon Blanc Vale do Maule - CWC | Teor Alc.: 13%",
-            "ordem": 2,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 110
-              }
-            ]
-          },
           {
             "id": 40920896,
             "nome": "Argentina 4 Estaciones Summer",
@@ -335,15 +322,28 @@
             ]
           },
           {
-            "id": 40920915,
-            "nome": "ROSÉ 4 Estaciones Spring Rose",
-            "descricao": "Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%",
-            "ordem": 8,
+            "id": 40920945,
+            "nome": "Argentina Angelica Zapata",
+            "descricao": "Uva: Chardonnay Mendoza - Catena Zapata | Teor Alc.: 13,5%",
+            "ordem": 1,
             "foto": null,
             "variacoes": [
               {
                 "nome": "Único",
-                "preco": 125
+                "preco": 290
+              }
+            ]
+          },
+          {
+            "id": 40920877,
+            "nome": "Chile Casas del Maipo",
+            "descricao": "Uva: Sauvignon Blanc Vale do Maule - CWC | Teor Alc.: 13%",
+            "ordem": 2,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 110
               }
             ]
           },
@@ -357,19 +357,6 @@
               {
                 "nome": "Único",
                 "preco": 140
-              }
-            ]
-          },
-          {
-            "id": 40920933,
-            "nome": "Itália Collezione",
-            "descricao": "Uva: Pinot Grigio Veneto - Sensi | Teor Alc.: 12,5%",
-            "ordem": 7,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 199
               }
             ]
           },
@@ -400,32 +387,6 @@
             ]
           },
           {
-            "id": 40920897,
-            "nome": "ROSÉ Susana Balbo",
-            "descricao": "Uva: Malbec e Pinot Noir Valle De Uco - Susana Balbo Teor Alc.: 12%",
-            "ordem": 9,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 260
-              }
-            ]
-          },
-          {
-            "id": 40920945,
-            "nome": "Argentina Angelica Zapata",
-            "descricao": "Uva: Chardonnay Mendoza - Catena Zapata | Teor Alc.: 13,5%",
-            "ordem": 1,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 290
-              }
-            ]
-          },
-          {
             "id": 40920892,
             "nome": "França Petit Chablis",
             "descricao": "Uva: Chardonnay Bourgogne - André Goichot | Teor Alc.: 13%",
@@ -437,6 +398,45 @@
                 "preco": 499
               }
             ]
+          },
+          {
+            "id": 40920933,
+            "nome": "Itália Collezione",
+            "descricao": "Uva: Pinot Grigio Veneto - Sensi | Teor Alc.: 12,5%",
+            "ordem": 7,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 199
+              }
+            ]
+          },
+          {
+            "id": 40920915,
+            "nome": "ROSÉ 4 Estaciones Spring Rose",
+            "descricao": "Uva: Malbec Mendoza - Tittarelli | Teor Alc.: 13%",
+            "ordem": 8,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 125
+              }
+            ]
+          },
+          {
+            "id": 40920897,
+            "nome": "ROSÉ Susana Balbo",
+            "descricao": "Uva: Malbec e Pinot Noir Valle De Uco - Susana Balbo Teor Alc.: 12%",
+            "ordem": 9,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 260
+              }
+            ]
           }
         ]
       },
@@ -444,19 +444,6 @@
         "nome": "Vinhos Meias garrafas",
         "ordem": 7,
         "itens": [
-          {
-            "id": 40920865,
-            "nome": "Vinho fortificado",
-            "descricao": "",
-            "ordem": 2,
-            "foto": null,
-            "variacoes": [
-              {
-                "nome": "Único",
-                "preco": 28
-              }
-            ]
-          },
           {
             "id": 40920866,
             "nome": "BRANCO Meia garrafa 375ml",
@@ -480,6 +467,19 @@
               {
                 "nome": "Único",
                 "preco": 60
+              }
+            ]
+          },
+          {
+            "id": 40920865,
+            "nome": "Vinho fortificado",
+            "descricao": "",
+            "ordem": 2,
+            "foto": null,
+            "variacoes": [
+              {
+                "nome": "Único",
+                "preco": 28
               }
             ]
           }
@@ -562,7 +562,6 @@
           }
         ]
       }
-    ],
-    "menu": []
+    ]
   }
 }

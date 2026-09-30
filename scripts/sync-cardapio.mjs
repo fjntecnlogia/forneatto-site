@@ -88,7 +88,16 @@ const CASAS = [
   {
     id: 'forneatto',
     nome: 'Forneatto Cucina',
-    arquivo: 'italiano/index.html',
+    // Desde a separacao dos repos o caminho 'italiano/index.html' nao existe
+    // mais aqui, e a sincronizacao desta casa vinha FALHANDO em silencio (o
+    // try/catch do laco engole e segue). Foi o que congelou a carta de vinhos
+    // no site. Corrigido junto com a retirada dela.
+    arquivo: 'index.html',
+    // A casa nao abriu e o PDV dela nao tem um prato — so vinho. Em 30/09 o
+    // Fundador mandou tirar preco e cardapio do ar: sem regioes, o sync grava
+    // o retrato em JSON e NAO escreve no HTML. Quando abrir, devolver aqui
+    // { marca: 'MENU', leva: () => true } e os marcadores no index.html.
+    soPreco: true,
     json: 'assets/data/cardapio-forneatto.json',
     markup: { grupo: 'portata', cabeca: 'portata__head', vazioCabeca: '', item: 'piatto',
               vazioItem: '', nome: 'piatto__nome', preco: 'piatto__prezzo', desc: 'piatto__desc',
@@ -96,10 +105,7 @@ const CASAS = [
     pega: [/pizza/i, /massa/i, /pasta/i, /lasanha/i, /nhoque/i, /risoto/i,
            /antipast/i, /dolci/i, /italian/i, /forno/i,
            /^vinho/i, /^espumante/i, /^champagne/i],
-    regioes: [
-      { marca: 'VINHOS', leva: cat => VINHOS_FORNEATTO.includes(cat), porPreco: true },
-      { marca: 'MENU', leva: () => true },
-    ],
+    regioes: [{ marca: 'MENU', leva: () => true }],
     // a carta comeca no tinto e termina no champagne, nao em ordem alfabetica
     ordem: ['Vinho Tinto', 'Vinho Branco', 'Vinhos Meias garrafas',
             'ESPUMANTES', 'CHAMPAGNE'],
@@ -197,6 +203,14 @@ async function baixarCategorias(idStore) {
   return [...porCategoria.values()];
 }
 
+// A loja no Saipos e UMA so para as tres casas do grupo, e a tabela CASAS
+// acima e a regra que separa as categorias entre elas. Este repositorio e de
+// uma casa: classifica tudo (senao a regra muda) e escreve so a sua.
+//
+// Mora no escopo do MODULO, e nao dentro do rotear(), porque os DOIS lacos
+// precisam dele — o que ordena e o que escreve. Estava so no primeiro.
+const SO_ESTA_CASA = 'forneatto';
+
 // === 3. rotear categoria -> casa -> regiao =================================
 function rotear(categorias) {
   const padrao = CASAS.find(c => c.pega === null) ?? CASAS[CASAS.length - 1];
@@ -210,11 +224,6 @@ function rotear(categorias) {
     const regiao = casa.regioes.find(r => r.leva(cat.nome)) ?? casa.regioes[casa.regioes.length - 1];
     destino.regioes.get(regiao.marca).push(cat);
   }
-
-  // A loja no Saipos e UMA so para as tres casas do grupo, e a tabela CASAS
-// acima e a regra que separa as categorias entre elas. Este repositorio e de
-// uma casa: classifica tudo (senao a regra muda) e escreve so a sua.
-const SO_ESTA_CASA = 'forneatto';
 
 for (const { casa, regioes } of mapa.values()) {
   if (casa.id !== SO_ESTA_CASA) continue;
@@ -319,6 +328,12 @@ console.log(`OK ${loja.trade_name} (loja ${loja.id_store}) — ${cidade?.desc_ci
 console.log(`   ${categorias.length} categorias no Saipos\n`);
 
 for (const { casa, regioes } of mapa.values()) {
+  // O MESMO guarda do laco de cima, que faltava aqui. Sem ele este repositorio
+  // tentava escrever 'bar/index.html' e 'japones/index.html' — o site das
+  // OUTRAS casas — e so nao estragou nada porque os caminhos nao existem aqui.
+  // Regra do Fundador, 16/09: cada projeto no seu repositorio, sempre.
+  if (casa.id !== SO_ESTA_CASA) continue;
+
   const todas = [...regioes.values()].flat();
   if (!todas.length) {
     console.log(`  - ${casa.nome}: sem categoria no Saipos — site intocado (cardapio escrito a mao)`);
