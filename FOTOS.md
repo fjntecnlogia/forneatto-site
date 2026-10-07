@@ -4,21 +4,28 @@
 > Escrita em 16/09/2026, conferindo arquivo por arquivo o que o site pede e o
 > que existe na pasta.
 
-## ⚠️ Esta casa não tem NENHUMA fotografia
+## ✅ 07/10/2026 — os dois 404 acabaram
 
-Não é exagero. A pasta `assets/img/italiano/` tem só dois desenhos de
-simulação, e o site aponta hoje para dois arquivos que **não existem**:
+Até aqui o site apontava para `hero.jpg` e `og.jpg`, e os dois davam **404**.
+O `og.jpg` era o mais caro: é a imagem da prévia quando alguém manda
+`forneattocucina.com.br` no WhatsApp, e o link chegava como uma linha de texto
+cinza, do lado de uma conversa cheia de fotos.
 
-```
-forneattocucina.com.br/assets/img/italiano/hero.jpg   404
-forneattocucina.com.br/assets/img/italiano/og.jpg     404
-```
+As fotos do salão tiradas em **02/10/2026** resolveram isso. Entraram quatro
+arquivos reais da casa:
 
-O `og.jpg` é o mais caro dos dois: é a imagem que aparece quando alguém manda
-`forneattocucina.com.br` no WhatsApp. **Hoje não aparece imagem nenhuma** — o
-link chega como uma linha de texto cinza, do lado de uma conversa cheia de
-fotos. Enquanto isso não for resolvido, cada link compartilhado do Forneatto
-vale menos que o do Saikō e o do Kikiu.
+| arquivo | onde aparece | origem |
+|---|---|---|
+| `og.jpg` | a prévia do link no WhatsApp | salão, parede de cucina |
+| `hero.jpg` | o topo do site | salão, limoeiro e a parede de quadros |
+| `salao.jpg` | a moldura larga de Ambiente | salão com a equipe e clientes |
+| `decoracao-prateleira.jpg` | a faixa "na parede, a casa conta o que serve" | a prateleira da cozinha |
+
+⚠️ **O `hero.jpg` é provisório.** O lugar daquele quadro é o forno a lenha
+aceso — item 1 abaixo, e a única coisa que o Forneatto tem e as outras duas
+casas não. Um salão bonito no topo não diferencia esta casa do Kikiu; fogo
+diferencia. Quando a foto do forno chegar, é trocar o arquivo apontado no
+`:root { --hero-img: ... }` do `index.html`.
 
 ## A ordem em que valem a pena
 
@@ -53,9 +60,11 @@ Uma massa, um ragù e a sobremesa da casa. Formato `prato`.
 
 Formato `porta`. À noite, com a luz de dentro acesa.
 
-### 6. O salão com gente
+### ~~6. O salão com gente~~ — ✅ feita em 02/10/2026
 
-Formato `galeria`.
+`salao.jpg`. A equipe de pé e clientes às mesas, que é exatamente o que a
+regra 3 lá embaixo pede. Pode ser refeita com a casa mais cheia, mas já não
+é buraco.
 
 ## Como entregar cada foto
 

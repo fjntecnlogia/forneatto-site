@@ -155,14 +155,13 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 940px) { .nav__links a:not(.btn) { display: none; } }
 
 /* ── abertura ─────────────────────────────────────────────────── */
-/* FOTO DO TOPO — trocar 'none' por url("assets/img/italiano/hero.jpg").
-   Foto do forno aceso funciona melhor aqui; o véu verde mantém o texto legível. */
-:root { --hero-img: none; }
-/* SIMULACAO, para aprovar o tratamento antes de as fotos reais chegarem.
-   A classe e ligada pela previa; o site publicado nao a tem, entao por
-   padrao continua sem foto. Quando a foto real chegar: apontar
-   --hero-img no :root acima e apagar este bloco. */
-html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
+/* FOTO DO TOPO — a primeira foto de verdade da casa, tirada em 02/10/2026.
+   É o salão: limoeiros, a parede de quadros e as mesas postas. O véu verde
+   por cima mantém o texto legível.
+   PROVISÓRIA: o lugar deste quadro é o forno a lenha aceso, que é a única
+   coisa que o Forneatto tem e as outras duas casas não (FOTOS.md, item 1).
+   Quando a foto do forno chegar, é só trocar o arquivo apontado aqui. */
+:root { --hero-img: url("assets/img/italiano/hero.jpg"); }
 .hero {
   background-color: var(--verde-deep);
   background-image:
@@ -175,6 +174,12 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
   color: var(--avorio); padding-block: clamp(62px, 9vw, 128px);
   border-bottom: 5px solid var(--rosso);
 }
+/* No celular a tela e mais alta do que larga, entao o 'cover' encaixa a foto
+   pela ALTURA e corta as laterais — nao o topo. Com o centro horizontal da
+   foto caindo no teto do salao, o celular abria o site mostrando forro. O
+   deslocamento traz o limoeiro, que e o que faz a foto parecer restaurante
+   italiano numa olhada. */
+@media (max-width: 760px) { .hero { background-position: 68% center; } }
 .hero h1 { max-width: 13ch; }
 .hero .sotto { color: rgba(251,248,241,.78); max-width: 46ch; margin-top: 28px; }
 .hero__grid { display: grid; gap: clamp(44px, 6vw, 80px); align-items: center; }
@@ -578,6 +583,14 @@ html.com-foto { --hero-img: url("assets/img/italiano/hero-simulacao.svg"); }
          moldura com legenda errada mente para quem le. -->
     <p class="sotto" style="margin:52px 0 20px">Na parede, a casa conta o que serve.</p>
     <div class="scatti">
+      <!-- A prateleira leva a moldura larga por dois motivos: o assunto e
+           horizontal (a prateleira corre pela parede inteira) e, com ela
+           ocupando duas colunas, a faixa fecha em 4 + 2 em vez de deixar o
+           quinto quadro sozinho numa linha so. -->
+      <figure class="scatto scatto--largo">
+        <img src="assets/img/italiano/decoracao-prateleira.jpg" alt="A prateleira da cozinha do Forneatto: panelas de cobre, potes de conserva e os cartazes italianos" loading="lazy" onerror="this.remove()">
+        <span>Foto — a prateleira da cozinha</span>
+      </figure>
       <figure class="scatto">
         <img src="assets/img/italiano/decoracao-canecas.jpg" alt="Canecas de cobre e o quadro do Moscow Mule, na parede do Forneatto" loading="lazy" onerror="this.remove()">
         <span>Foto — canecas de cobre</span>
