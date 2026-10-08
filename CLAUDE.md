@@ -66,6 +66,7 @@ As tres telas do site falam com o sistema por um **proxy no proprio dominio**:
 | `/reservas-api/forneatto` | `/public/reservas/forneatto` |
 | `/agenda-api/forneatto` | `/public/eventos/forneatto` |
 | `/opiniao-api/forneatto` | `/public/opiniao/forneatto` |
+| `/promocoes-api/forneatto` | `/public/promocoes/forneatto` |
 
 O proxy roda no servidor da Vercel, entao **o navegador so ve
 forneattocucina.com.br** — nunca o endereco de quem hospeda o sistema. E isso que

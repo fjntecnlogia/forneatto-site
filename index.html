@@ -635,6 +635,20 @@ p:last-child { margin-bottom: 0; }
   <div class="agd" data-agenda="forneatto"></div>
 </section>
 
+<!-- ═══ promoções ═══
+     Irmã da agenda, com a mesma folha (.agd) e a mesma regra: nasce
+     escondida e /assets/promocoes/promocoes.js só mostra a seção se a
+     casa tiver promoção VALENDO no painel. Vencida some sozinha; seção
+     vazia diria "esta casa não faz promoção". -->
+<section class="block crema agd-secao" id="promocoes" hidden>
+  <div class="wrap" style="margin-bottom:44px">
+    <span class="occhiello">Promozioni · Promoções</span>
+    <h2>Vale questa settimana · Vale nesta semana</h2>
+    <p class="piccolo" style="margin-top:18px">O que vale esta semana, direto do salão.</p>
+  </div>
+  <div class="agd" data-promocoes="forneatto"></div>
+</section>
+
 <!-- ═══ reservar ═══ -->
 <section class="block crema" id="reservar">
   <div class="wrap">
@@ -819,6 +833,7 @@ p:last-child { margin-bottom: 0; }
 </script>
 <script src="assets/reserva/reserva.js" defer></script>
 <script src="assets/agenda/agenda.js" defer></script>
+<script src="assets/promocoes/promocoes.js" defer></script>
 <script type="module" src="assets/analytics.js"></script>
 </body>
 </html>
