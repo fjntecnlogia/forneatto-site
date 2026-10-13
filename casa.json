@@ -13,6 +13,8 @@
     "ga4": "",
     "searchConsole": "",
     "_nota": "ATENÇÃO: forneato.com.br está escrito com um T só — não bate com a marca FORNEATTO. Serve como caça-erro de digitação, nunca como principal.",
+    "_vinhosPublicos": "false = a carta de vinhos existe em /vinhos, mas sem link, fora do sitemap e com noindex. O Fundador tirou os precos do ar em 30/09/2026 porque a casa ainda nao abriu; quando abrir, trocar para true (ou apagar a linha) e rodar build-vinhos e aplicar-dominios.",
+    "vinhosPublicos": false,
     "imagens": "italiano"
   },
   "_imagens": "A pasta desta casa dentro de assets/img (hero.jpg, og.jpg)."
