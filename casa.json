@@ -13,8 +13,8 @@
     "ga4": "",
     "searchConsole": "",
     "_nota": "ATENÇÃO: forneato.com.br está escrito com um T só — não bate com a marca FORNEATTO. Serve como caça-erro de digitação, nunca como principal.",
-    "_vinhosPublicos": "false = a carta de vinhos existe em /vinhos, mas sem link, fora do sitemap e com noindex. O Fundador tirou os precos do ar em 30/09/2026 porque a casa ainda nao abriu; quando abrir, trocar para true (ou apagar a linha) e rodar build-vinhos e aplicar-dominios.",
-    "vinhosPublicos": false,
+    "_vinhosPublicos": "true (ou sem a linha) = a carta de vinhos e publica: /vinhos entra no sitemap, sai o noindex, e a home e o cardapio linkam para ela (com precos). false = a carta existe, mas sem link, fora do sitemap e com noindex: foi assim de 30/09/2026 (o Fundador tirou os precos do ar enquanto a casa nao tinha aberto) ate a abertura, em 14/10/2026. Ao mudar, rodar build-vinhos e aplicar-dominios.",
+    "vinhosPublicos": true,
     "cardapio": "cardapio",
     "imagens": "italiano"
   },

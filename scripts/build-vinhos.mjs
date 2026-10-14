@@ -88,6 +88,8 @@ await writeFile(join(RAIZ, 'vinhos.html'), paginaCardapio({
   url: `${BASE}/vinhos`,
   ogImagem: `${BASE}/assets/img/${CASA.imagens}/og.jpg`,
   casa: CASA.nome, titulo: 'Carta de vinhos', endereco: CASA.endereco,
+  tituloPagina: 'Carta de Vinhos | Forneatto Cucina — Cuiabá',
+  ogLargura: 1200, ogAltura: 630, ogAlt: "O salão do Forneatto Cucina, com limoeiros, a parede de quadros e as mesas postas",
   logo: CASA.logo, icone: CASA.icone,
   descricao: `Carta de vinhos e espumantes — ${total} rótulos, de ${secoes.map(s => s.titulo.toLowerCase()).join(', ')}. ${CASA.nome}, Cuiabá.`,
   gerador: 'scripts/build-vinhos.mjs',

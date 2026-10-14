@@ -202,10 +202,17 @@ textarea:focus-visible,input:focus-visible{outline:none;border-color:var(--marca
 .ajuda-google{margin:10px 0 0;font-size:12.5px;color:var(--suave);line-height:1.5}
 .outra{margin-top:34px;padding-top:24px;border-top:1px solid var(--fio)}
 .outra .casas{margin-top:14px}
+.pular{position:absolute;left:12px;top:-80px;z-index:50;background:var(--papel);
+  color:var(--tinta);padding:12px 18px;font-size:14px;font-weight:700;
+  text-decoration:none;border:2px solid var(--tinta)}
+.pular:focus{top:12px}
+main:focus{outline:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
 <header class="capa">
   <img class="capa__logo" src="${esc(c.logo.src)}" alt="${esc(c.logo.alt)}"
@@ -214,7 +221,7 @@ textarea:focus-visible,input:focus-visible{outline:none;border-color:var(--marca
 </header>
 <div class="progresso" aria-hidden="true"><i id="barra"></i></div>
 
-<main>
+<main id="conteudo" tabindex="-1">
   <h1 class="soleitor">${esc(c.casa)} — como foi sua visita</h1>
 
   <form id="form" novalidate>
