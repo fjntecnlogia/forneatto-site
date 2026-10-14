@@ -94,7 +94,7 @@ export function paginaCardapio(d) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>${esc(d.titulo)} — ${esc(d.casa)}</title>
+<title>${esc(d.tituloPagina ?? `${d.titulo} — ${d.casa}`)}</title>
 <meta name="description" content="${esc(d.descricao)}">
 ${d.naoIndexar ? '<meta name="robots" content="noindex, nofollow">' : ''}
 <meta name="theme-color" content="${t.barra}">
@@ -103,10 +103,14 @@ ${d.naoIndexar ? '<meta name="robots" content="noindex, nofollow">' : ''}
 <meta name="apple-mobile-web-app-title" content="${esc(d.casa)}">
 <link rel="canonical" href="${esc(d.url)}">
 <meta property="og:type" content="restaurant.menu">
-<meta property="og:title" content="${esc(d.titulo)} — ${esc(d.casa)}">
+<meta property="og:title" content="${esc(d.tituloPagina ?? `${d.titulo} — ${d.casa}`)}">
 <meta property="og:description" content="${esc(d.descricao)}">
 <meta property="og:url" content="${esc(d.url)}">
 <meta property="og:image" content="${esc(d.ogImagem)}">
+${d.ogLargura ? `<meta property="og:image:width" content="${d.ogLargura}">
+<meta property="og:image:height" content="${d.ogAltura}">
+` : ''}${d.ogAlt ? `<meta property="og:image:alt" content="${esc(d.ogAlt)}">
+` : ''}<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${d.fontes}">
@@ -125,6 +129,13 @@ body{
   padding-bottom:calc(28px + env(safe-area-inset-bottom));
 }
 img{max-width:100%;display:block}
+/* "Pular para o conteudo": fora da tela ate ganhar foco pelo teclado */
+.pular{position:absolute;left:12px;top:-80px;z-index:50;background:var(--papel);
+  color:var(--tinta);padding:12px 18px;font-size:14px;font-weight:700;
+  text-decoration:none;border:2px solid var(--tinta)}
+.pular:focus{top:12px}
+:focus-visible{outline:3px solid var(--realce);outline-offset:3px}
+main:focus{outline:none}
 
 /* ── abertura: a foto da casa, o logo e nada mais ───────────────────── */
 .capa{position:relative;isolation:isolate;overflow:hidden;color:var(--sobre-barra);
@@ -173,7 +184,7 @@ ${t.heroImg ? `.capa::after{content:"";position:absolute;inset:0;z-index:-1;
 .i[hidden],.div[hidden],.sec[hidden],.fichas a[hidden]{display:none}
 
 /* ── seções ────────────────────────────────────────────────────────── */
-main{padding:0 16px;max-width:640px;margin:0 auto}
+main{padding:0 16px;max-width:640px;margin:0 auto;scroll-margin-top:64px}
 .sec{padding-top:44px;scroll-margin-top:64px}
 .sec__cab{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 .sec__tit{font-family:var(--display);font-weight:${t.pesoDisplay};
@@ -227,6 +238,8 @@ main{padding:0 16px;max-width:640px;margin:0 auto}
 </head>
 <body>
 
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
 <header class="capa">
   ${t.heroImg ? `<img class="capa__foto" src="${esc(t.heroImg)}" alt="" fetchpriority="high" decoding="async">` : ''}
   ${d.logo ? `<img class="capa__logo" src="${esc(d.logo.src)}" alt="${esc(d.logo.alt)}"
@@ -253,7 +266,7 @@ main{padding:0 16px;max-width:640px;margin:0 auto}
 
 <nav class="fichas" aria-label="Seções do cardápio">${fichas}</nav>
 
-<main>
+<main id="conteudo" tabindex="-1">
 ${d.secoes.map(secao).join('\n')}
 
   <footer class="pe">

@@ -26,7 +26,7 @@ const MINIMO = 10;   // piso de sanidade: menos que isso e resposta pela metade
 // casa usa o tema CLARO (marfim, verde e rosso), ao contrario das outras duas.
 const CASA = {
   nome: 'Forneatto Cucina', dominio: 'forneattocucina.com.br', imagens: 'italiano',
-  endereco: 'Av. Brasília, 177 — Bloco A, Lojas 116 e 117 · Cuiabá/MT',
+  endereco: 'Av. Brasília, 177 — Bloco A, Lojas 116 e 117 · Sala C · Cuiabá/MT',
   logo: { src: '/assets/img/logos/web/forneatto-claro.png', alt: 'Forneatto Cucina — Cozinha Italiana', largura: 124, altura: 104 },
   icone: { aba: '/assets/img/icone/forneatto-32.png', inicio: '/assets/img/icone/forneatto-180.png' },
   fontes: 'https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700&family=Archivo:wght@400;500;600;700&display=swap',
@@ -88,6 +88,8 @@ await writeFile(join(RAIZ, 'vinhos.html'), paginaCardapio({
   url: `${BASE}/vinhos`,
   ogImagem: `${BASE}/assets/img/${CASA.imagens}/og.jpg`,
   casa: CASA.nome, titulo: 'Carta de vinhos', endereco: CASA.endereco,
+  tituloPagina: 'Carta de Vinhos | Forneatto Cucina — Cuiabá',
+  ogLargura: 1200, ogAltura: 630, ogAlt: "O salão do Forneatto Cucina, com limoeiros, a parede de quadros e as mesas postas",
   logo: CASA.logo, icone: CASA.icone,
   descricao: `Carta de vinhos e espumantes — ${total} rótulos, de ${secoes.map(s => s.titulo.toLowerCase()).join(', ')}. ${CASA.nome}, Cuiabá.`,
   gerador: 'scripts/build-vinhos.mjs',

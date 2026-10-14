@@ -93,6 +93,21 @@ com uma etiqueta dizendo que está em pé) e **apaga o EXIF depois** — essa
 etiqueta carrega o GPS de onde a foto foi tirada e o modelo do aparelho, e
 isso não tem por que subir para a internet.
 
+Depois de trocar ou acrescentar uma foto, **no seu PC (PowerShell)**:
+
+```
+python3 scripts/gerar-webp.py
+```
+
+Ele gera as versões WebP em vários tamanhos (`salao-480.webp`, `salao-800.webp`…)
+que o `<picture>` da home usa; o JPEG continua como reserva. Foto nova também
+precisa de uma linha na lista `FOTOS` do script e do mesmo `<picture>` das
+outras no `index.html`.
+
+⚠️ **Moldura sem foto não aparece**: a vitrine de destaques (pizza, massa,
+forno) está comentada no `index.html` até as fotos chegarem — o bloco e as
+instruções para recolocá-lo estão na seção "O que fazemos".
+
 ## Três regras que valem mais que equipamento
 
 1. **Luz de janela, nunca o flash.** Flash de celular achata a comida e deixa

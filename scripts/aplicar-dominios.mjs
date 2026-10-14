@@ -144,6 +144,8 @@ Sitemap: ${base}/sitemap.xml
 // proposito: o navegador so ve o dominio da casa, nunca o de quem hospeda.
 const SISTEMA = 'https://api-painel.fjntecnologia.com.br/public';
 
+const CACHE_ASSETS = 'public, max-age=86400, stale-while-revalidate=604800';
+
 const vercel = {
   $schema: 'https://openapi.vercel.sh/vercel.json',
   cleanUrls: true,
@@ -183,10 +185,26 @@ const vercel = {
   ],
 
   headers: [
+    // Os arquivos de /assets NAO tem hash no nome (hero.jpg, reserva.js...): o
+    // mesmo caminho passa a servir outra coisa quando alguem troca o arquivo.
+    // `immutable` + 1 ano era promessa de que isso nunca acontece: trocar uma
+    // foto levaria ate um ano para chegar a quem ja visitou. E a regra vale
+    // tambem para a resposta 404 — a de pizza.jpg, que ainda nao existe, saiu
+    // da Vercel como `immutable` (visto ao vivo em 14/10/2026), e a foto, depois
+    // de subir, continuaria "inexistente" no navegador de quem passou antes.
+    // Um dia de cache fresco, e uma semana servindo o antigo enquanto o
+    // navegador confere em segundo plano: rapido e corrigivel.
     { source: '/assets/(.*)',
-      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
+      headers: [{ key: 'Cache-Control', value: CACHE_ASSETS }] },
   ],
 };
+
+// Trava: nada que o gerador escreve pode ser imutavel (a regra acima tambem
+// vale para a resposta 404 de um arquivo que nao existe).
+if (JSON.stringify(vercel.headers).includes('immutable')) {
+  console.error('ERRO: cabecalho immutable nao pode sair deste gerador (ver comentario em headers)');
+  process.exit(1);
+}
 
 await writeFile(join(RAIZ, 'vercel.json'), JSON.stringify(vercel, null, 2) + '\n');
 

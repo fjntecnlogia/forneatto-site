@@ -8,8 +8,8 @@
  * ou desligou prato lá, e o cardapio-vivo.js deixa a página em dia a cada
  * abertura. A página já nasce pronta (HTML, boa no Google).
  *
- * Os vinhos NÃO entram aqui: moram em /vinhos (build-vinhos.mjs), que a casa
- * segura até abrir (casa.json → vinhosPublicos). Combos também ficam de fora.
+ * Os vinhos NÃO entram aqui: moram em /vinhos (build-vinhos.mjs), e este
+ * cardápio aponta para lá (extras, logo abaixo). Combos também ficam de fora.
  *
  * Painel fora do ar ou resposta magra demais: NÃO escreve nada. O cardápio
  * que já está no ar é melhor que um vazio.
@@ -25,7 +25,9 @@ const MINIMO = 12;   // piso de sanidade: menos que isso é resposta pela metade
 
 const CASA = {
   nome: 'Forneatto Cucina', dominio: 'forneattocucina.com.br', imagens: 'italiano',
-  endereco: 'Av. Brasília, 177 — Bloco A, Lojas 116 e 117 · Cuiabá/MT',
+  // atalho visivel no topo do cardapio (a pilula de borda verde antes das secoes)
+  extras: [{ texto: 'Carta de vinhos', href: '/vinhos' }],
+  endereco: 'Av. Brasília, 177 — Bloco A, Lojas 116 e 117 · Sala C · Cuiabá/MT',
   logo: { src: '/assets/img/logos/web/forneatto-claro.png', alt: 'Forneatto Cucina — Cozinha Italiana', largura: 124, altura: 104 },
   icone: { aba: '/assets/img/icone/forneatto-32.png', inicio: '/assets/img/icone/forneatto-180.png' },
   fontes: 'https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700&family=Archivo:wght@400;500;600;700&display=swap',
@@ -87,6 +89,10 @@ await writeFile(join(RAIZ, 'cardapio.html'), paginaCardapio({
   url: `${BASE}/cardapio`,
   ogImagem: `${BASE}/assets/img/${CASA.imagens}/og.jpg`,
   casa: CASA.nome, titulo: 'Cardápio', endereco: CASA.endereco,
+  // O <title> e o og:title (o que o Google e o WhatsApp mostram) dizem o que
+  // tem na casa; o titulo curto acima continua sendo o do cabecalho da pagina.
+  tituloPagina: 'Cardápio Forneatto — Massas, Risotos e Antipasti | Cuiabá',
+  ogLargura: 1200, ogAltura: 630, ogAlt: "O salão do Forneatto Cucina, com limoeiros, a parede de quadros e as mesas postas",
   logo: CASA.logo, icone: CASA.icone,
   descricao: `Cardápio do ${CASA.nome}: antipasti, massas frescas, risotos e sobremesas, com chopp, drinks e bebidas. Cozinha italiana em Cuiabá.`,
   gerador: 'scripts/build-cardapio.mjs',
@@ -95,7 +101,7 @@ await writeFile(join(RAIZ, 'cardapio.html'), paginaCardapio({
   tema: CASA.tema,
   naoIndexar: false,
   apiSlug: 'forneatto',
-  extras: [],
+  extras: CASA.extras,
   secoes,
   jsonld: {
     '@context': 'https://schema.org', '@type': 'Menu', name: `Cardápio — ${CASA.nome}`,
