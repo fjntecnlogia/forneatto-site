@@ -8,15 +8,30 @@
 <meta name="apple-mobile-web-app-title" content="Forneatto">
 <meta name="theme-color" content="#0e3b1e">
 
-<title>Forneatto Cucina · Cozinha Italiana em Cuiabá — forno a lenha ao lado do Shopping Três Américas</title>
-<meta name="description" content="Forneatto Cucina: pizza napolitana em forno a lenha, massa fresca feita todo dia e carta de vinhos em Cuiabá. Ao lado do Shopping Três Américas.">
+<title>Restaurante Italiano em Cuiabá | Forneatto Cucina — Massa Fresca</title>
+<meta name="description" content="Forneatto Cucina, restaurante italiano em Cuiabá: massa fresca feita todo dia e forno a lenha. Jardim das Américas, ao lado do Shopping Três Américas.">
 <link rel="canonical" href="https://forneattocucina.com.br/">
 <meta property="og:url" content="https://forneattocucina.com.br/">
-<meta property="og:title" content="Forneatto Cucina · Cozinha Italiana em Cuiabá">
-<meta property="og:description" content="Pizza napolitana em forno a lenha e massa fresca feita todo dia. Ao lado do Shopping Três Américas.">
+<meta property="og:site_name" content="Forneatto Cucina">
+<meta property="og:title" content="Restaurante Italiano em Cuiabá | Forneatto Cucina — Massa Fresca">
+<meta property="og:description" content="Forneatto Cucina, restaurante italiano em Cuiabá: massa fresca feita todo dia e forno a lenha. Jardim das Américas, ao lado do Shopping Três Américas.">
 <meta property="og:image" content="https://forneattocucina.com.br/assets/img/italiano/og.jpg">
-<meta property="og:type" content="restaurant">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="O salão do Forneatto Cucina, com limoeiros, a parede de quadros e panelas de cobre, e as mesas postas">
+<meta property="og:type" content="restaurant.restaurant">
 <meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- A foto do topo e o LCP da pagina. Estes preloads precisam apontar para os
+     MESMOS arquivos que o image-set() do --hero-img escolhe la embaixo (mesma
+     media query, mesma regra 1x/2x); se um dia divergirem, o celular baixa a
+     foto duas vezes. No celular o topo usa um recorte vertical (hero-mobile),
+     gerado por scripts/gerar-webp.py. -->
+<link rel="preload" as="image" type="image/webp" href="assets/img/italiano/hero-mobile.webp" media="(max-width: 600px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/italiano/hero-1280.webp 1x, assets/img/italiano/hero-1920.webp 2x" media="(min-width: 601px)" fetchpriority="high">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +72,7 @@
   --rsv-tinta:        var(--carbone);
   --rsv-tinta-fraca:  var(--grigio);
   --rsv-fio:          var(--filo);
+  --rsv-borda-campo:  #857d6b;   /* 3,8:1 sobre o marfim do campo; o --filo dava 1,4:1 */
   --rsv-acento:       var(--rosso);
   --rsv-acento-tinta: var(--avorio);
   --rsv-campo:        var(--avorio);
@@ -85,6 +101,15 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+/* "Pular para o conteudo": fora da tela ate ganhar foco pelo teclado */
+.pular {
+  position: absolute; left: 12px; top: -80px; z-index: 300;
+  background: var(--avorio); color: var(--carbone); padding: 12px 18px;
+  font-size: 14px; font-weight: 700; text-decoration: none;
+  border: 2px solid var(--carbone);
+}
+.pular:focus { top: 12px; }
+main:focus { outline: none; }
 ::selection { background: var(--rosso); color: var(--avorio); }
 
 .wrap { max-width: 1200px; margin: 0 auto; padding-inline: var(--pad); }
@@ -102,6 +127,11 @@ h2 { font-size: clamp(31px, 4.6vw, 58px); letter-spacing: -.015em; }
 h3 { font-size: clamp(20px, 2.1vw, 25px); }
 h1 i, h2 i { font-style: italic; color: var(--rosso); }
 .verde h1 i, .verde h2 i { color: #ff8a8f; }
+/* "450 graus" no topo: o vermelho da marca sobre a foto verde-escura dava ~1,8:1.
+   Marfim (>= 10:1 sobre o veu) mantem o italico e ganha o vermelho como sublinhado,
+   que e decoracao e nao carrega o texto. */
+.hero h1 i { color: var(--avorio); text-decoration: underline; text-decoration-color: var(--rosso);
+  text-decoration-thickness: .07em; text-underline-offset: .14em; text-decoration-skip-ink: none; }
 p { margin: 0 0 1.1em; }
 p:last-child { margin-bottom: 0; }
 
@@ -130,7 +160,7 @@ p:last-child { margin-bottom: 0; }
 /* ── QR do cardápio (o mesmo das mesas) ───────────────────────── */
 .qr-cardapio {
   display: flex; align-items: center; gap: clamp(18px, 3vw, 30px);
-  max-width: 560px; margin: 0 0 clamp(40px, 5vw, 68px);
+  max-width: 560px; margin: 0;
   padding: clamp(16px, 2.4vw, 24px);
   border: 1px solid var(--filo); background: var(--crema);
   color: inherit; text-decoration: none;
@@ -160,17 +190,58 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .13em; color: var(--avorio);
 }
 .marchio__sub { font-size: 8px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: #8fd6a5; margin-top: 6px; }
-.nav__links { display: flex; align-items: center; gap: 30px; }
+.nav__links { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 30px); }
 .nav__links a {
   font-size: 12px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase;
   text-decoration: none; color: rgba(251,248,241,.72); padding-block: 4px;
   border-bottom: 1px solid transparent; transition: .18s ease;
+  white-space: nowrap;
 }
-.nav__links a:not(.btn):hover { color: var(--avorio); border-bottom-color: var(--rosso); }
-/* o seletor generico acima vence o .btn por especificidade — reforcar */
-.nav__links a.btn, .nav__links a.btn:hover { color: var(--avorio); border-bottom-color: transparent; }
+.nav__links a:hover { color: var(--avorio); border-bottom-color: var(--rosso); }
+.nav__fim { display: flex; align-items: center; gap: 10px; }
 .nav .btn { padding: 12px 22px; font-size: 11px; }
-@media (max-width: 940px) { .nav__links a:not(.btn) { display: none; } }
+/* menu hamburguer: so existe no celular, e so quando o JS esta ligado. Sem JS
+   os links ficam em uma segunda linha, sempre visiveis. */
+.nav__toggle { display: none; }
+@media (min-width: 1101px) { .nav__links { margin-left: auto; } .nav__fim { margin-left: 30px; } }
+@media (max-width: 1100px) {
+  .nav__fim { margin-left: auto; }
+  .nav__in { flex-wrap: wrap; gap: 8px 12px; padding-block: 10px; }
+  .nav__in .nav__links { order: 5; flex: 1 0 100%; flex-wrap: wrap; gap: 0 22px; padding-bottom: 6px; }
+  .nav__links a { padding-block: 12px; min-height: 44px; display: inline-flex; align-items: center; }
+  .js .nav__toggle {
+    display: inline-flex; align-items: center; justify-content: center; flex: none;
+    width: 46px; height: 46px; padding: 0; cursor: pointer;
+    background: transparent; color: var(--avorio);
+    border: 1px solid rgba(251,248,241,.45);
+  }
+  .nav__toggle svg { width: 22px; height: 22px; }
+  .nav__toggle .x { display: none; }
+  .nav__toggle[aria-expanded="true"] .barras { display: none; }
+  .nav__toggle[aria-expanded="true"] .x { display: block; }
+  /* com JS: a lista vira uma gaveta embaixo da barra (a barra fica numa linha so) */
+  .js .nav__in { flex-wrap: nowrap; }
+  .js .nav__in .nav__links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0; flex: none;
+    background: var(--verde); border-top: 1px solid rgba(251,248,241,.18);
+    padding: 6px var(--pad) 12px; box-shadow: 0 18px 30px rgba(6,36,15,.35);
+  }
+  .js .nav__in .nav__links.aberto { display: flex; }
+  .js .nav__links a {
+    font-size: 14px; letter-spacing: .12em; color: var(--avorio);
+    border-bottom: 1px solid rgba(251,248,241,.12); min-height: 50px;
+  }
+}
+@media (max-width: 420px) {
+  .marchio { gap: 10px; }
+  .marchio__seal { width: 36px; height: 36px; }
+  .marchio__nome { font-size: 18px; letter-spacing: .1em; }
+  .marchio__sub { font-size: 7.5px; letter-spacing: .14em; margin-top: 5px; }
+  .nav .btn { padding: 12px 14px; }
+  .nav__fim { gap: 8px; }
+}
+@media (max-width: 430px) { .marchio__sub { display: none; } }
 
 /* ── abertura ─────────────────────────────────────────────────── */
 /* FOTO DO TOPO — a primeira foto de verdade da casa, tirada em 02/10/2026.
@@ -179,7 +250,17 @@ p:last-child { margin-bottom: 0; }
    PROVISÓRIA: o lugar deste quadro é o forno a lenha aceso, que é a única
    coisa que o Forneatto tem e as outras duas casas não (FOTOS.md, item 1).
    Quando a foto do forno chegar, é só trocar o arquivo apontado aqui. */
-:root { --hero-img: url("assets/img/italiano/hero.jpg"); }
+:root { --hero-img: url("assets/img/italiano/hero.jpg"); }   /* navegador sem image-set(): o JPEG de sempre */
+/* WebP por tamanho de tela: o celular recebe um recorte vertical de ~70 KB, o
+   computador a foto larga (1280 px, ou 1920 em tela 2x). O JPEG original
+   (541 KB) fica so como ultimo recurso. Os <link rel="preload"> do <head>
+   repetem esta mesma escolha. */
+@supports (background-image: image-set(url("a.webp") type("image/webp"))) {
+  :root { --hero-img: image-set(url("assets/img/italiano/hero-mobile.webp") type("image/webp"), url("assets/img/italiano/hero.jpg") type("image/jpeg")); }
+  @media (min-width: 601px) {
+    :root { --hero-img: image-set(url("assets/img/italiano/hero-1280.webp") type("image/webp") 1x, url("assets/img/italiano/hero-1920.webp") type("image/webp") 2x, url("assets/img/italiano/hero.jpg") type("image/jpeg") 1x); }
+  }
+}
 .hero {
   background-color: var(--verde-deep);
   background-image:
@@ -198,6 +279,8 @@ p:last-child { margin-bottom: 0; }
    deslocamento traz o limoeiro, que e o que faz a foto parecer restaurante
    italiano numa olhada. */
 @media (max-width: 760px) { .hero { background-position: 68% center; } }
+/* O recorte do celular (hero-mobile.webp) foi tirado em volta destes 68%: se
+   mudar o numero, refaca o recorte em scripts/gerar-webp.py. */
 .hero h1 { max-width: 13ch; }
 .hero .sotto { color: rgba(251,248,241,.78); max-width: 46ch; margin-top: 28px; }
 .hero__grid { display: grid; gap: clamp(44px, 6vw, 80px); align-items: center; }
@@ -219,7 +302,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--display); font-weight: 400; font-size: clamp(42px, 5.4vw, 66px);
   line-height: .96; font-variant-numeric: tabular-nums; letter-spacing: -.02em;
 }
-.cifra span { font-size: 11.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(251,248,241,.82); }
+.cifra span { font-size: 11.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--avorio); }   /* era .82 de opacidade: 4,2:1 sobre o vermelho; marfim cheio da 5,7:1 */
 
 /* ── história ─────────────────────────────────────────────────── */
 .storia { display: grid; gap: clamp(36px, 5vw, 76px); align-items: start; }
@@ -270,13 +353,29 @@ p:last-child { margin-bottom: 0; }
 @media (min-width: 900px) { .duo { grid-template-columns: 1fr 1fr; } }
 
 /* ── galeria ──────────────────────────────────────────────────── */
-.scatti { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+/* As molduras de Ambiente fecham em linhas inteiras (conta no comentario do HTML):
+   celular = 1 coluna; a partir de 641 px, grade de 6 (larga = 3, em pe = 2);
+   a faixa da parede e outra grade (2 colunas no celular, 3 no computador). */
+.scatti { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 641px) {
+  .scatti--sala { grid-template-columns: repeat(6, 1fr); }
+  .scatti--sala .scatto { grid-column: span 2; }
+  .scatti--sala .scatto--largo { grid-column: span 3; }
+}
+.scatti--parede { grid-template-columns: repeat(2, 1fr); }
+.scatti--parede .scatto--largo { grid-column: span 2; }
+@media (min-width: 900px) {
+  .scatti--parede { grid-template-columns: repeat(3, 1fr); }
+  /* a prateleira acompanha a altura do quadro em pe ao lado dela */
+  .scatti--parede .scatto--largo { aspect-ratio: auto; }
+}
+/* vinhos: texto em coluna unica, sem moldura */
+.vinho-solo { max-width: 760px; }
 /* ── destaques ────────────────────────────────────────────────────
-   A secao "O que servimos" prometia o cardapio e estava VAZIA no ar: o PDV
-   nao tem um unico prato do Forneatto cadastrado (so vinho), e o bloco que
-   o sync preenche nasceu e ficou em branco. Promessa vazia e pior que
-   secao ausente. Enquanto nao ha prato no PDV nem foto, ficam quatro
-   molduras com o nome do que a casa faz — sem preco inventado. */
+   A vitrine "O que fazemos" (quatro molduras com o nome do que a casa faz,
+   sem preco) esta FORA DO AR ate chegarem as fotos de pizza, massa e forno:
+   o HTML dela esta comentado na secao #carta. O CSS fica para quando voltar.
+   Promessa vazia e pior que secao ausente. */
 .destaques {
   display: grid; gap: clamp(16px, 2vw, 26px);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 232px), 1fr));
@@ -294,10 +393,6 @@ p:last-child { margin-bottom: 0; }
   transition: transform .9s cubic-bezier(.2,.7,.3,1);
 }
 .destaque:hover .destaque__foto img { transform: scale(1.045); }
-.destaque__foto span {
-  font-size: 9px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
-  color: #a89e8c; text-align: center; padding: 12px;
-}
 .destaque__nome { font-size: 17px; font-weight: 700; margin: 15px 0 0; }
 .destaque__desc { font-size: 13.5px; color: #6f6455; line-height: 1.68; margin-top: 7px; }
 
@@ -328,19 +423,19 @@ p:last-child { margin-bottom: 0; }
 
 .scatto {
   margin: 0;   /* <figure> nasce com margin: 1em 40px e encolhe a foto */
-  aspect-ratio: 4/5; background: var(--crema); border: 1px solid var(--filo);
+  aspect-ratio: 3/4; background: var(--crema); border: 1px solid var(--filo);
   display: grid; place-items: center; position: relative; overflow: hidden;
 }
-/* A foto cobre a moldura e esconde a legenda de "falta foto". Se o arquivo
-   nao existir, o onerror tira o <img> do caminho e a legenda volta sozinha —
-   da para publicar a moldura antes da foto chegar, sem icone quebrado. */
-.scatto img, .facciata img {
+/* A foto cobre a moldura. Moldura sem foto NUNCA vai ao ar: se o arquivo
+   nao carregar, o onerror remove o <figure> inteiro (e o :has abaixo cobre o
+   caso de a foto sair do HTML sem o figure sair junto). Nada de "Foto — ..." */
+.scatto:not(:has(img)), .facciata:not(:has(img)), .destaque:not(:has(img)) { display: none; }
+.scatto picture, .facciata picture { position: absolute; inset: 0; display: block; }
+.scatto img, .facciata img, .mappa img {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; display: block;
 }
-.scatto--largo { aspect-ratio: 16/10; grid-column: span 2; }
-@media (max-width: 640px) { .scatto--largo { grid-column: span 1; } }
-.scatto span { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #a89e8c; text-align: center; padding: 14px; }
+.scatto--largo { aspect-ratio: 16/10; }
 
 /* ── eventos ──────────────────────────────────────────────────── */
 .sale { display: grid; gap: 1px; background: rgba(251,248,241,.2); }
@@ -354,10 +449,11 @@ p:last-child { margin-bottom: 0; }
 .orari { list-style: none; margin: 26px 0 0; padding: 0; }
 .orari li { display: flex; justify-content: space-between; gap: 22px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--filo); font-size: 15px; }
 .orari li:last-child { border-bottom: 0; }
+@media (max-width: 520px) { .orari li { flex-direction: column; gap: 2px; } }
 .orari b { font-weight: 700; }
 .orari span { color: var(--grigio); font-variant-numeric: tabular-nums; }
 .mappa { aspect-ratio: 4/3; width: 100%; border: 1px solid var(--filo); background: var(--crema); position: relative; overflow: hidden; display: block; text-decoration: none; }
-.mappa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.mappa picture { position: absolute; inset: 0; display: block; }
 /* O selo diz que a imagem e clicavel. Mapa que parece figura ninguem toca. */
 .mappa__abrir { position: absolute; left: 14px; bottom: 14px; z-index: 1;
   background:#0e3b1e;color:#fbf8f1; border-radius: 0;
@@ -374,17 +470,21 @@ p:last-child { margin-bottom: 0; }
   border: 1px solid var(--filo); background: var(--crema);
   display: grid; place-items: center; overflow: hidden;
 }
-.facciata span { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #a89e8c; text-align: center; padding: 14px; }
 
 /* ── rodapé ───────────────────────────────────────────────────── */
 .piede { background: var(--verde-deep); color: rgba(251,248,241,.72); padding-block: 62px 30px; }
 .piede__grid { display: grid; gap: 36px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
 .piede a { color: rgba(251,248,241,.72); text-decoration: none; }
+/* alvo de toque >= 44 px: os links eram linhas de 14 px de altura */
+.piede a { display: inline-flex; align-items: center; min-height: 44px; }
+.piede__lista { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
+.piede__lista a { display: flex; }
+.piede__fine a { padding-inline: 2px; }
 .piede a:hover { color: #ff8a8f; }
 .piede .occhiello { color: #8fd6a5; margin-bottom: 14px; }
 .piede__fine {
   margin-top: 46px; padding-top: 22px; border-top: 1px solid rgba(251,248,241,.16);
-  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 11.5px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; justify-content: space-between; font-size: 11.5px;
 }
 .sorelle { display: flex; flex-wrap: wrap; gap: 20px; }
 
@@ -401,6 +501,12 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 560px) { .wa span { display: none; } .wa { padding: 17px; border-radius: 50%; } }
 
 :focus-visible { outline: 2px solid var(--rosso); outline-offset: 3px; }
+/* O vermelho sobre o verde-escuro dava 2,75:1 (e sumia de vez sobre a faixa
+   vermelha do forno). Nas areas escuras o anel e marfim. */
+.nav :focus-visible, .hero :focus-visible, .forno :focus-visible, .verde :focus-visible,
+.piede :focus-visible, .sale :focus-visible { outline-color: var(--avorio); }
+/* botao flutuante: vermelho, fica em cima de fundo claro E escuro; anel duplo */
+.wa:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 7px var(--carbone); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 
   /* O botao flutuante do WhatsApp mora no canto inferior direito e passava
@@ -413,6 +519,8 @@ p:last-child { margin-bottom: 0; }
 <link rel="stylesheet" href="/assets/animacao.css">
 </head>
 <body>
+
+<a class="pular" href="#cima">Pular para o conteúdo</a>
 
 <header class="nav">
   <div class="nav__in">
@@ -432,19 +540,25 @@ p:last-child { margin-bottom: 0; }
         <span class="marchio__sub">Cucina · Cozinha Italiana</span>
       </span>
     </a>
-    <nav class="nav__links">
+    <nav class="nav__links" id="menu" aria-label="Principal">
       <a href="#storia">A casa</a>
       <a href="#carta">A cozinha</a>
       <a href="/cardapio">Cardápio</a>
       <a href="#vini">Vinhos</a>
       <a href="#ambiente">Ambiente</a>
       <a href="#dove">Onde estamos</a>
-      <a class="btn" href="#reservar">Reservar</a>
     </nav>
+    <div class="nav__fim">
+      <a class="btn" href="#reservar">Reservar</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir o menu">
+        <svg class="barras" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="x" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
-<main id="cima">
+<main id="cima" tabindex="-1">
 
 <!-- ═══ abertura ═══ -->
 <section class="hero">
@@ -505,13 +619,14 @@ p:last-child { margin-bottom: 0; }
   <div class="wrap">
     <span class="occhiello">La cucina</span>
     <h2 style="margin-bottom:20px">O que fazemos</h2>
-    <p class="sotto" style="margin-bottom:clamp(40px,5vw,68px)">O forno, a massa e a mesa grande. O cardápio completo está a um toque; a carta de vinhos fica na casa.</p>
+    <p class="sotto" style="margin-bottom:clamp(40px,5vw,68px)">O forno, a massa e a mesa grande. O cardápio completo está a um toque, e a carta de vinhos tem página própria.</p>
 
     <!-- O cardapio nasce do painel da casa (scripts/build-cardapio.mjs), nao e
          digitado aqui: preco e prato escritos neste arquivo seriam a segunda
          verdade sobre o mesmo assunto. O site so aponta para ele. -->
     <div class="riga" style="margin-top:0;margin-bottom:clamp(40px,5vw,68px)">
       <a class="btn" href="/cardapio">Ver o cardápio</a>
+      <a class="btn btn--vuoto" style="color:var(--verde)" href="/vinhos">Carta de vinhos</a>
     </div>
 
     <!-- O QR code do cardapio, aqui no site (assets/img/qrcode/forneatto.svg,
@@ -525,81 +640,64 @@ p:last-child { margin-bottom: 0; }
       </span>
     </a>
 
-    <!-- Sem preco: o PDV nao tem um unico prato do Forneatto cadastrado,
-         so vinho. Preco aqui seria preco digitado a mao, que e exatamente o
-         que o projeto nao faz. Quando os pratos entrarem no PDV e as fotos
-         chegarem, cada moldura enche sozinha pelo nome do arquivo. -->
-
-    <!-- O cardapio saiu da vitrine, mas os marcadores do Saipos continuam
-         aqui, escondidos. O scripts/sync-cardapio.mjs injeta entre eles, e
-         se nao os encontrar ele LANCA — derrubando a sincronizacao inteira
-         desta casa, inclusive as regioes que ainda importam. Container
-         hidden: o sync escreve, ninguem ve, nada quebra. Apagar so junto
-         com a regiao correspondente no ROTEAMENTO do script. -->
+    <!-- Os marcadores do Saipos continuam aqui, escondidos. O
+         scripts/sync-cardapio.mjs injeta entre eles, e se nao os encontrar ele
+         LANCA — derrubando a sincronizacao inteira desta casa, inclusive as
+         regioes que ainda importam. Container hidden: o sync escreve, ninguem
+         ve, nada quebra. Apagar so junto com a regiao correspondente no
+         ROTEAMENTO do script. -->
     <div hidden data-saipos="menu">
       <!-- SAIPOS:MENU:INICIO -->
       <!-- SAIPOS:MENU:FIM -->
     </div>
 
+    <!-- VITRINE DE DESTAQUES — fora do ar ate chegarem as fotos (14/10/2026).
+         Faltam pizza.jpg, massa.jpg e forno.jpg; so a tavolata tem foto, e ela ja
+         aparece em Ambiente. Moldura vazia ou legenda "Foto — ..." nao pode
+         aparecer para o cliente, e uma vitrine de um quadro so tambem nao.
+         Quando as tres fotos chegarem: rodar scripts/gerar-webp.py (acrescentando
+         as fotos em FOTOS) e recolocar o bloco abaixo, usando o mesmo <picture>
+         de Ambiente.
+
     <div class="destaques">
-      <figure class="destaque" style="transition-delay:0ms">
-        <div class="destaque__foto">
-          <img src="assets/img/italiano/pizza.jpg" alt="Pizza napolitana" loading="lazy" onerror="this.remove()">
-          <span>Foto — Pizza napolitana</span>
-        </div>
+      <figure class="destaque"><div class="destaque__foto">[foto]</div>
         <p class="destaque__nome">Pizza napolitana</p>
-        <p class="destaque__desc">Noventa segundos a 450 graus no forno a lenha. A massa descansa vinte e quatro horas antes de entrar.</p>
-      </figure>
-      <figure class="destaque" style="transition-delay:90ms">
-        <div class="destaque__foto">
-          <img src="assets/img/italiano/massa.jpg" alt="Massa fresca" loading="lazy" onerror="this.remove()">
-          <span>Foto — Massa fresca</span>
-        </div>
+        <p class="destaque__desc">Noventa segundos a 450 graus no forno a lenha. A massa descansa vinte e quatro horas antes de entrar.</p></figure>
+      <figure class="destaque"><div class="destaque__foto">[foto]</div>
         <p class="destaque__nome">Massa fresca</p>
-        <p class="destaque__desc">Feita todo dia na casa.</p>
-      </figure>
-      <figure class="destaque" style="transition-delay:180ms">
-        <div class="destaque__foto">
-          <img src="assets/img/italiano/forno.jpg" alt="O forno a lenha" loading="lazy" onerror="this.remove()">
-          <span>Foto — O forno a lenha</span>
-        </div>
+        <p class="destaque__desc">Feita todo dia na casa.</p></figure>
+      <figure class="destaque"><div class="destaque__foto">[foto]</div>
         <p class="destaque__nome">O forno a lenha</p>
-        <p class="destaque__desc">O fogo que dá a borda alta e a marca escura.</p>
-      </figure>
-      <figure class="destaque" style="transition-delay:270ms">
-        <div class="destaque__foto">
-          <img src="assets/img/italiano/tavolata.jpg" alt="A tavolata" loading="lazy" onerror="this.remove()">
-          <span>Foto — A tavolata</span>
-        </div>
+        <p class="destaque__desc">O fogo que dá a borda alta e a marca escura.</p></figure>
+      <figure class="destaque"><div class="destaque__foto">[foto]</div>
         <p class="destaque__nome">A tavolata</p>
-        <p class="destaque__desc">A mesa comunitária de doze lugares, no meio da casa.</p>
-      </figure>
+        <p class="destaque__desc">A mesa comunitária de doze lugares, no meio da casa.</p></figure>
     </div>
+    -->
 
   </div>
 </section>
 
 <!-- ═══ vinhos ═══ -->
 <section class="block" id="vini">
-  <div class="wrap duo">
-    <div class="scatti"><div class="scatto scatto--largo"><span>Foto — adega e taças</span></div></div>
-    <div>
+  <!-- Sem moldura de foto: a adega e as tacas ainda nao foram fotografadas, e
+       moldura vazia nao aparece para o cliente. Texto em coluna unica. -->
+  <div class="wrap">
+    <div class="vinho-solo">
       <span class="occhiello">La cantina</span>
       <h2>Uma carta que <i>vale a viagem</i></h2>
-      <p class="sotto" style="margin-top:22px">Itália, França, Espanha, Portugal, Argentina, Chile, Uruguai e Brasil — do tinto de entrada ao Barolo, além dos espumantes e do champagne. A carta fica na casa.</p>
+      <p class="sotto" style="margin-top:22px">Itália, França, Espanha, Portugal, Argentina, Chile, Uruguai e Brasil — do tinto de entrada ao Barolo, além dos espumantes e do champagne. A carta completa, com os preços, está a um toque.</p>
       <p class="sotto">Não é preciso entender de vinho para pedir bem aqui: diga o que vai comer e quanto quer gastar, que a gente resolve o resto.</p>
       <div class="riga">
+        <a class="btn" href="/vinhos">Ver a carta de vinhos</a>
         <a class="btn btn--vuoto" style="color:var(--verde)" href="https://wa.me/5565992426464?text=Ol%C3%A1!%20Queria%20saber%20sobre%20a%20carta%20de%20vinhos%20do%20Forneatto." target="_blank" rel="noopener">Falar com o sommelier</a>
       </div>
     </div>
   </div>
 
-  <!-- A carta de vinhos com preco saiu do ar em 30/09/2026, a pedido do
-       Fundador. A casa ainda nao abriu, e o site anunciava 32 rotulos com
-       preco na frente — preco que ninguem podia cobrar ainda. Os marcadores
-       SAIPOS:VINHOS foram embora JUNTO com a regiao 'VINHOS' no roteamento
-       do scripts/sync-cardapio.mjs: enquanto os dois existirem, a proxima
-       sincronizacao traz a carta de volta sozinha. -->
+  <!-- A carta de vinhos (com preco) saiu do ar em 30/09/2026, enquanto a casa
+       nao tinha aberto, e VOLTOU em 14/10/2026, com a abertura: casa.json ->
+       vinhosPublicos: true. Ela nasce do painel (scripts/build-vinhos.mjs). -->
 </section>
 
 <!-- ═══ ambiente ═══ -->
@@ -608,46 +706,63 @@ p:last-child { margin-bottom: 0; }
     <span class="occhiello">Ambiente</span>
     <h2 style="margin-bottom:18px">Salão, varanda e a <i>tavolata</i></h2>
     <p class="sotto" style="margin-bottom:44px">Sessenta lugares no salão, vinte na varanda coberta e a mesa comunitária de doze lugares no meio da casa.</p>
-    <div class="scatti">
+    <!-- Faltam a foto do forno e a da adega: moldura sem foto nao aparece. Cada
+         foto abaixo tem o onerror que tira a moldura inteira se o arquivo sumir.
+
+         As molduras fecham em linhas inteiras, sem quadro sozinho:
+         - salao e parede: grade de 6 colunas. Larga = 3 colunas, em pe = 2.
+           Linhas: larga + larga; em pe + em pe + em pe; larga + larga.
+         - parede: grade de 3 colunas (prateleira larga = 2 + 1 quadro; depois
+           3 quadros). No celular: 2 colunas, prateleira ocupando as duas.
+         Foto nova? Mantenha a conta: larga vale 2 (ou 3), em pe vale 1 (ou 2). -->
+    <div class="scatti scatti--sala">
       <figure class="scatto scatto--largo">
-        <img src="assets/img/italiano/salao.jpg" alt="Salão do Forneatto" loading="lazy" onerror="this.remove()">
-        <span>Foto — salão</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/salao-480.webp 480w, assets/img/italiano/salao-800.webp 800w, assets/img/italiano/salao-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1200px) 47vw, 520px">
+          <img src="assets/img/italiano/salao.jpg" width="1920" height="1080" alt="Salão do Forneatto, com a equipe e clientes às mesas" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
+      </figure>
+      <figure class="scatto scatto--largo">
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/salao-bar-480.webp 480w, assets/img/italiano/salao-bar-800.webp 800w, assets/img/italiano/salao-bar-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1200px) 47vw, 520px">
+          <img src="assets/img/italiano/salao-bar.jpg" width="1600" height="900" alt="O salão do Forneatto visto do lado do bar, com o balcão de madeira ripada à direita" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <figure class="scatto">
-        <img src="assets/img/italiano/forno.jpg" alt="Forno a lenha do Forneatto" loading="lazy" onerror="this.remove()">
-        <span>Foto — forno a lenha</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/tavolata-480.webp 480w, assets/img/italiano/tavolata-800.webp 800w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1200px) 30vw, 340px">
+          <img src="assets/img/italiano/tavolata.jpg" width="900" height="1600" alt="Tavolata — a mesa comunitária do Forneatto" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <figure class="scatto">
-        <img src="assets/img/italiano/tavolata.jpg" alt="Tavolata — a mesa comunitária do Forneatto" loading="lazy" onerror="this.remove()">
-        <span>Foto — tavolata</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/salao-limoeiro-mesas-480.webp 480w, assets/img/italiano/salao-limoeiro-mesas-800.webp 800w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1200px) 30vw, 340px">
+          <img src="assets/img/italiano/salao-limoeiro-mesas.jpg" width="900" height="1600" alt="O salão do Forneatto com um limoeiro ao centro, as mesas postas e a parede de quadros ao fundo" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
+      </figure>
+      <figure class="scatto">
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/mesa-posta-480.webp 480w, assets/img/italiano/mesa-posta-800.webp 800w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1200px) 30vw, 340px">
+          <img src="assets/img/italiano/mesa-posta.jpg" width="900" height="1600" alt="Mesa posta do Forneatto: pratos, taças verdes e toalha xadrez" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
     </div>
 
-    <!-- O salao por inteiro: fotos de 13/10/2026, da pasta do Drive. Tres
-         largas (2 colunas cada) e dois quadros altos fecham a faixa em
-         2 + 2 e 2 + 1 + 1, sem sobrar quadro sozinho numa linha. As legendas
+    <!-- O salao por inteiro: fotos de 13/10/2026, da pasta do Drive. As legendas
          dizem so o que a foto mostra. -->
     <p class="sotto" style="margin:52px 0 20px">Os limoeiros e as mesas postas.</p>
-    <div class="scatti">
+    <div class="scatti scatti--sala">
       <figure class="scatto scatto--largo">
-        <img src="assets/img/italiano/salao-limoeiros.jpg" alt="O salão do Forneatto, com os limoeiros, a parede de quadros e as mesas postas" loading="lazy" onerror="this.remove()">
-        <span>Foto — o salão e os limoeiros</span>
-      </figure>
-      <figure class="scatto scatto--largo">
-        <img src="assets/img/italiano/salao-mesas.jpg" alt="Mesas redondas postas no salão do Forneatto, com toalha xadrez verde e cortinas ao fundo" loading="lazy" onerror="this.remove()">
-        <span>Foto — as mesas postas</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/salao-limoeiros-480.webp 480w, assets/img/italiano/salao-limoeiros-800.webp 800w, assets/img/italiano/salao-limoeiros-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1200px) 47vw, 520px">
+          <img src="assets/img/italiano/salao-limoeiros.jpg" width="1600" height="900" alt="O salão do Forneatto, com os limoeiros, a parede de quadros e as mesas postas" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <figure class="scatto scatto--largo">
-        <img src="assets/img/italiano/salao-bar.jpg" alt="O salão do Forneatto visto do lado do bar, com o balcão de madeira ripada à direita" loading="lazy" onerror="this.remove()">
-        <span>Foto — o salão e o bar</span>
-      </figure>
-      <figure class="scatto">
-        <img src="assets/img/italiano/salao-limoeiro-mesas.jpg" alt="O salão do Forneatto com um limoeiro ao centro, as mesas postas e a parede de quadros ao fundo" loading="lazy" onerror="this.remove()">
-        <span>Foto — o limoeiro no salão</span>
-      </figure>
-      <figure class="scatto">
-        <img src="assets/img/italiano/mesa-posta.jpg" alt="Mesa posta do Forneatto: pratos, taças verdes e toalha xadrez" loading="lazy" onerror="this.remove()">
-        <span>Foto — a mesa posta</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/salao-mesas-480.webp 480w, assets/img/italiano/salao-mesas-800.webp 800w, assets/img/italiano/salao-mesas-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1200px) 47vw, 520px">
+          <img src="assets/img/italiano/salao-mesas.jpg" width="1600" height="900" alt="Mesas redondas postas no salão do Forneatto, com toalha xadrez verde e cortinas ao fundo" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
     </div>
 
@@ -657,30 +772,36 @@ p:last-child { margin-bottom: 0; }
          com nome (salao, forno, tavolata): quadro na parede nao e forno, e
          moldura com legenda errada mente para quem le. -->
     <p class="sotto" style="margin:52px 0 20px">Na parede, a casa conta o que serve.</p>
-    <div class="scatti">
-      <!-- A prateleira leva a moldura larga por dois motivos: o assunto e
-           horizontal (a prateleira corre pela parede inteira) e, com ela
-           ocupando duas colunas, a faixa fecha em 4 + 2 em vez de deixar o
-           quinto quadro sozinho numa linha so. -->
+    <div class="scatti scatti--parede">
       <figure class="scatto scatto--largo">
-        <img src="assets/img/italiano/decoracao-prateleira.jpg" alt="A prateleira da cozinha do Forneatto: panelas de cobre, potes de conserva e os cartazes italianos" loading="lazy" onerror="this.remove()">
-        <span>Foto — a prateleira da cozinha</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/decoracao-prateleira-480.webp 480w, assets/img/italiano/decoracao-prateleira-800.webp 800w, assets/img/italiano/decoracao-prateleira-1280.webp 1280w" sizes="(max-width: 899px) calc(100vw - 44px), 690px">
+          <img src="assets/img/italiano/decoracao-prateleira.jpg" width="1920" height="1080" alt="A prateleira da cozinha do Forneatto: panelas de cobre, potes de conserva e os cartazes italianos" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <figure class="scatto">
-        <img src="assets/img/italiano/decoracao-canecas.jpg" alt="Canecas de cobre e o quadro do Moscow Mule, na parede do Forneatto" loading="lazy" onerror="this.remove()">
-        <span>Foto — canecas de cobre</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/decoracao-canecas-480.webp 480w, assets/img/italiano/decoracao-canecas-800.webp 800w" sizes="(max-width: 899px) 46vw, 340px">
+          <img src="assets/img/italiano/decoracao-canecas.jpg" width="1200" height="1600" alt="Canecas de cobre e o quadro do Moscow Mule, na parede do Forneatto" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <figure class="scatto">
-        <img src="assets/img/italiano/decoracao-espresso.jpg" alt="Quadro do Espresso Martini na parede do Forneatto" loading="lazy" onerror="this.remove()">
-        <span>Foto — quadro do Espresso Martini</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/decoracao-espresso-480.webp 480w, assets/img/italiano/decoracao-espresso-800.webp 800w" sizes="(max-width: 899px) 46vw, 340px">
+          <img src="assets/img/italiano/decoracao-espresso.jpg" width="1200" height="1600" alt="Quadro do Espresso Martini na parede do Forneatto" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <figure class="scatto">
-        <img src="assets/img/italiano/decoracao-negroni.jpg" alt="Quadro do Negroni na parede do Forneatto" loading="lazy" onerror="this.remove()">
-        <span>Foto — quadro do Negroni</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/decoracao-negroni-480.webp 480w, assets/img/italiano/decoracao-negroni-800.webp 800w" sizes="(max-width: 899px) 46vw, 340px">
+          <img src="assets/img/italiano/decoracao-negroni.jpg" width="1200" height="1600" alt="Quadro do Negroni na parede do Forneatto" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <figure class="scatto">
-        <img src="assets/img/italiano/decoracao-pina.jpg" alt="Quadro da Piña Colada na parede do Forneatto" loading="lazy" onerror="this.remove()">
-        <span>Foto — quadro da Piña Colada</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/decoracao-pina-480.webp 480w, assets/img/italiano/decoracao-pina-800.webp 800w" sizes="(max-width: 899px) 46vw, 340px">
+          <img src="assets/img/italiano/decoracao-pina.jpg" width="1200" height="1600" alt="Quadro da Piña Colada na parede do Forneatto" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
     </div>
   </div>
@@ -758,8 +879,10 @@ p:last-child { margin-bottom: 0; }
            procurar. Sao tres casas na mesma calcada, e o texto ao lado ja
            explica "somos a ultima a direita" — isso e uma foto. -->
       <figure class="facciata">
-        <img src="assets/img/italiano/porta.jpg" alt="A fachada do Forneatto Cucina, Cozinha Italiana, com o letreiro aceso sob os limoeiros" loading="lazy" onerror="this.remove()">
-        <span>Foto — fachada</span>
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/porta-480.webp 480w, assets/img/italiano/porta-800.webp 800w" sizes="(max-width: 899px) calc(100vw - 44px), 520px">
+          <img src="assets/img/italiano/porta.jpg" width="1157" height="1800" alt="A fachada do Forneatto Cucina, Cozinha Italiana, com o letreiro aceso sob os limoeiros" loading="lazy" decoding="async" onerror="this.closest('figure').remove()">
+        </picture>
       </figure>
       <!-- O MAPA E UMA IMAGEM, E A IMAGEM E O LINK. Duas razoes, as duas medidas:
            1. O embed do Google NAO NOMEIA o lugar. Pedir o alfinete com rotulo
@@ -776,7 +899,10 @@ p:last-child { margin-bottom: 0; }
            que e o que a licenca pede. -->
       <a class="mappa" href="https://www.google.com/maps/search/?api=1&amp;query=-15.61167%2C-56.07355" target="_blank" rel="noopener"
          aria-label="Abrir a localização do Forneatto Cucina no Google Maps">
-        <img src="assets/img/italiano/mapa.jpg" alt="Mapa: Forneatto Cucina na Av. Brasília, 177, Jardim das Américas, Cuiabá — ao lado do Shopping Três Américas" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="assets/img/italiano/mapa-480.webp 480w, assets/img/italiano/mapa-800.webp 800w" sizes="(max-width: 899px) calc(100vw - 44px), 520px">
+          <img src="assets/img/italiano/mapa.jpg" width="1000" height="750" alt="Mapa: Forneatto Cucina na Av. Brasília, 177, Jardim das Américas, Cuiabá — ao lado do Shopping Três Américas" loading="lazy" decoding="async">
+        </picture>
         <span class="mappa__abrir">Abrir no Google Maps</span>
       </a>
     </div>
@@ -794,15 +920,21 @@ p:last-child { margin-bottom: 0; }
       </div>
       <div>
         <span class="occhiello">Contato</span>
-        <p style="font-size:14.5px"><a href="https://wa.me/5565992426464">WhatsApp (65) 99242-6464</a><br><a href="tel:+5565992426464">Ligar (65) 99242-6464</a><br><a href="mailto:contato@forneattocucina.com.br">contato@forneattocucina.com.br</a></p>
+        <ul class="piede__lista">
+          <li><a href="https://wa.me/5565992426464">WhatsApp (65) 99242-6464</a></li>
+          <li><a href="tel:+5565992426464">Ligar (65) 99242-6464</a></li>
+          <li><a href="mailto:contato@forneattocucina.com.br">contato@forneattocucina.com.br</a></li>
+        </ul>
       </div>
       <div>
         <span class="occhiello">Siga</span>
-        <p style="font-size:14.5px"><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a><br><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></p>
+        <ul class="piede__lista">
+          <li><a href="https://www.instagram.com/forneatto.cucina/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
       </div>
       <div>
         <span class="occhiello">Nossas casas</span>
-        <p class="sorelle" style="font-size:14.5px">
+        <p class="sorelle" style="font-size:14.5px;margin:0">
           <a href="https://saikogastronomia.com.br" target="_blank" rel="noopener">Saikō</a>
           <a href="https://kikiu.com.br" target="_blank" rel="noopener">Kikiu</a>
         </p>
@@ -830,7 +962,7 @@ p:last-child { margin-bottom: 0; }
   "image": "https://forneattocucina.com.br/assets/img/italiano/og.jpg",
   "url": "https://forneattocucina.com.br",
   "telephone": "+5565992426464",
-  "servesCuisine": ["Italiana", "Pizza"],
+  "servesCuisine": ["Italiana"],
   "priceRange": "$$$",
   "address": {
     "@type": "PostalAddress",
@@ -845,10 +977,13 @@ p:last-child { margin-bottom: 0; }
     "latitude": -15.61167,
     "longitude": -56.07355
   },
+  "sameAs": ["https://www.instagram.com/forneatto.cucina/"],
   "hasMap": "https://www.google.com/maps/search/?api=1&query=-15.61167%2C-56.07355",
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "23:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "23:59" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "15:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "19:00", "closes": "23:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "15:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "19:00", "closes": "00:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "12:00", "closes": "17:00" }
   ],
   "acceptsReservations": "True",
@@ -870,9 +1005,9 @@ p:last-child { margin-bottom: 0; }
 }
 </script>
 
-<!-- O dado estruturado do cardapio saiu junto com a carta: ele levava os
-     mesmos 40 precos de vinho para o Google. Volta quando a casa abrir e os
-     pratos existirem no PDV. -->
+<!-- O dado estruturado do cardapio (Menu, com os pratos e os precos) mora nas
+     paginas /cardapio e /vinhos, geradas do painel; a home aponta para ele
+     pelo "hasMenu" acima, em vez de repetir preco aqui. -->
 <!-- Entrada em cascata dos blocos quando entram na tela. O site inteiro
      funciona sem este script: sem ele ninguem recebe .visivel, e a regra de
      fallback deixa tudo visivel. -->
@@ -895,6 +1030,29 @@ p:last-child { margin-bottom: 0; }
     // rootMargin negativo comeca a entrada um pouco antes de encostar.
   }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
   alvos.forEach(function (e) { obs.observe(e); });
+})();
+</script>
+<script>
+// Menu do celular. O HTML ja funciona sem isto (os links ficam em uma segunda
+// linha); o botao so aparece quando este script marca <html class="js">.
+(function () {
+  var btn = document.querySelector('.nav__toggle'), menu = document.getElementById('menu');
+  if (!btn || !menu) return;
+  function abrir(sim, devolverFoco) {
+    menu.classList.toggle('aberto', sim);
+    btn.setAttribute('aria-expanded', sim ? 'true' : 'false');
+    btn.setAttribute('aria-label', sim ? 'Fechar o menu' : 'Abrir o menu');
+    if (!sim && devolverFoco) btn.focus();
+  }
+  btn.addEventListener('click', function () { abrir(btn.getAttribute('aria-expanded') !== 'true'); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) abrir(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('aberto')) abrir(false, true);
+  });
+  document.addEventListener('click', function (e) {
+    if (menu.classList.contains('aberto') && !e.target.closest('.nav')) abrir(false);
+  });
+  matchMedia('(min-width: 1101px)').addEventListener('change', function (m) { if (m.matches) abrir(false); });
 })();
 </script>
 <script src="assets/reserva/reserva.js" defer></script>
