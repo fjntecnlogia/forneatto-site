@@ -27,7 +27,7 @@ const CASA = {
   nome: 'Forneatto Cucina', dominio: 'forneattocucina.com.br', imagens: 'italiano',
   // atalho visivel no topo do cardapio (a pilula de borda verde antes das secoes)
   extras: [{ texto: 'Carta de vinhos', href: '/vinhos' }],
-  endereco: 'Av. Brasília, 177 — Bloco A, Lojas 116 e 117 · Cuiabá/MT',
+  endereco: 'Av. Brasília, 177 — Bloco A, Lojas 116 e 117 · Sala C · Cuiabá/MT',
   logo: { src: '/assets/img/logos/web/forneatto-claro.png', alt: 'Forneatto Cucina — Cozinha Italiana', largura: 124, altura: 104 },
   icone: { aba: '/assets/img/icone/forneatto-32.png', inicio: '/assets/img/icone/forneatto-180.png' },
   fontes: 'https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700&family=Archivo:wght@400;500;600;700&display=swap',
